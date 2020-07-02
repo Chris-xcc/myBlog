@@ -4,6 +4,8 @@ import router from './router';
 import axios from 'axios';
 import './plugins/element'
 
+
+import '../src/assets/css/normalize.css';
 Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios
