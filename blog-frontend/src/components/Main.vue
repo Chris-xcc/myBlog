@@ -9,7 +9,11 @@
       >
         <div class="top-bar">
           <div class="logo">
-            <img src="../assets/logo.png" alt />
+            <el-image
+              style="height: 45px; width: 50px;"
+              :src="require('../assets/logo.png')"
+              :lazy="true"
+            ></el-image>
           </div>
 
           <div class="title">
@@ -23,10 +27,55 @@
             <el-menu-item index="4">订单管理</el-menu-item>
             <el-menu-item index="4">订单管理</el-menu-item>
           </div>
+
           <div class="user">
-            <el-button type="primary">登录</el-button>
-            <el-button type="primary">注册</el-button>
-            <!-- <el-button type="primary">退出</el-button> -->
+            <i class="el-icon-s-custom" @click="userLogin"></i>
+            <div v-if="isShow">
+            <login></login>
+            </div>
+            <!-- <el-dialog
+              title="登录"
+              :visible.sync="dialogFormVisible"
+              center
+              :close-on-click-modal="false"
+              width="20%"
+            >
+              <div class="login-container">
+                <div class="login-box">
+                  <el-form :model="loginForm" class="login-form" :rules="loninFormRules" ref="loginFormRef">
+                    <el-form-item prop="username">
+                      <el-input
+                        type="text"
+                        v-model="loginForm.username"
+                        prefix-icon="el-icon-s-custom"
+                        :style="formInputWidth"
+                        placeholder="用户名"
+                      ></el-input>
+                    </el-form-item>
+                    <el-form-item prop="password">
+                      <el-input
+                        type="password"
+                        v-model="loginForm.password"
+                        prefix-icon="el-icon-lock"
+                        :style="formInputWidth"
+                        placeholder="密码"
+                      ></el-input>
+                    </el-form-item>
+                    <el-form-item prop="remember">
+                        <el-checkbox >记住密码</el-checkbox>
+                    </el-form-item>
+
+                    <el-form-item class="btn">
+                      <el-button type="primary" @click="submitForm('loginForm')" style="margin-right: 20px">登录</el-button>
+                      <el-button @click="resetForm('loginForm')">忘记密码</el-button>
+                    </el-form-item>
+                  </el-form>
+                </div>
+              </div>
+              <div>
+                <div class="signUp">注册</div>
+              </div>
+            </el-dialog> -->
           </div>
         </div>
       </el-menu>
@@ -43,13 +92,31 @@
 </template>
 
 <script>
+import Login from './Login';
 export default {
   name: "Main",
   data() {
     return {
-      activeIndex: "1",
-      activeIndex2: "1"
+      dialogTableVisible: true,
+      dialogFormVisible: true,
+      isShow: false
+      // formInputWidth: "200px",
+      // loninFormRules:{
+
+      // },
+      // loginForm: {
+      //   username: "",
+      //   password: ""
+      // },
     };
+  },
+  components: {
+    Login
+  },
+  methods: {
+    userLogin(){
+      this.isShow = !this.isShow
+    }
   }
 };
 </script>
@@ -70,9 +137,8 @@ export default {
     .logo {
       display: flex;
       align-items: center;
-       margin-left: 10px;
-      img {
-        height: 45px;
+      margin-left: 15px;
+      .el-image {
         border-radius: 50%;
         background-color: #fff;
       }
@@ -84,14 +150,36 @@ export default {
     .user {
       display: flex;
       align-items: center;
-      margin-right: 10px;
+      margin-right: 15px;
+      font-size: 25px;
+      cursor: pointer;
+      position: relative;
+
+      // .login-box {
+      //   display: flex;
+      //   justify-content: center;
+      // }
+      // .btn {
+      //   display: flex;
+      //   justify-content: center;
+      //   margin-top: 40px;
+      //   margin-top: -20px;
+
+      // }
+
+      // .signUp {
+      //   position: absolute;
+      //   bottom: 20px;
+      //   right: 20px;
+      // }
     }
   }
   .el-menu {
     border: 0;
   }
 }
-.el-footer{
+
+.el-footer {
   background: #fff;
 }
 </style>
