@@ -6,7 +6,9 @@
       </el-header>
       <el-main>
         <slot>
-          <Main></Main>
+         <!-- <Main></Main> -->
+          <PostDetail></PostDetail>
+          <!-- <post-list></post-list> -->
         </slot>
       </el-main>
       <el-footer>
@@ -21,13 +23,17 @@
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer";
 import Main from "@/components/Main";
+import PostDetail from "../components/PostDetail";
+import PostList from "../components/PostList";
 
 export default {
   name: "Home",
   components: {
     Header,
+    PostDetail,
     Footer,
     Main,
+    PostList
   },
 };
 </script>

@@ -9,12 +9,12 @@ VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err);
 }
 
-const Home = () => import('../views/Home.vue')
-const About = () => import( /* webpackChunkName: "about" */ '../views/About.vue')
-const Category = () => import("../views/Category");
-const Tag = () => import("../views/Tag");
-const Login = () => import("../views/Login");
-const Register = () => import("../views/Register");
+const Home = () => import('@/views/Home.vue')
+const About = () => import( /* webpackChunkName: "about" */ '@/views/About.vue')
+const Category = () => import("@/views/Category");
+const Tag = () => import("@/views/Tag");
+const Login = () => import("@/views/Login");
+const Register = () => import("@/views/Register");
 
 const routes = [{
     path: '/',
