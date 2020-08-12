@@ -1,36 +1,34 @@
 import Vue from 'vue';
 import {
   Main,
-  Aside,
   Header,
   Footer,
   Container,
   Menu,
   MenuItem,
-  Submenu,
+  Carousel,
+  CarouselItem,
   Button,
-  Image,
   Form,
   FormItem,
   Input,
-  Carousel,
-  CarouselItem,
-  Switch,
+  Breadcrumb,
+  BreadcrumbItem,
+  Checkbox
 } from 'element-ui';
 
 Vue.use(Main);
-Vue.use(Aside);
 Vue.use(Header);
 Vue.use(Footer);
 Vue.use(Container);
 Vue.use(Menu);
 Vue.use(MenuItem);
-Vue.use(Submenu);
+Vue.use(Carousel);
+Vue.use(CarouselItem);
 Vue.use(Button);
-Vue.use(Image);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Input);
-Vue.use(Carousel);
-Vue.use(CarouselItem);
-Vue.use(Switch);
+Vue.use(Breadcrumb);
+Vue.use(BreadcrumbItem);
+Vue.use(Checkbox);
