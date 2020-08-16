@@ -14,7 +14,7 @@ import {
   Input,
   Breadcrumb,
   BreadcrumbItem,
-  // Checkbox
+  Avatar,
 } from 'element-ui';
 
 Vue.use(Main);
@@ -31,4 +31,4 @@ Vue.use(FormItem);
 Vue.use(Input);
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
-// Vue.use(Checkbox);
+Vue.use(Avatar);

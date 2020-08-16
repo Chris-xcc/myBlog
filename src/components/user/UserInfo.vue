@@ -1,6 +1,11 @@
 <template>
   <div class="user-info">
-    <div class="main">1321321</div>
+       <div class="demo-basic--circle">
+        <div class="block"><el-avatar shape="square" :size="50" :src="squareUrl"></el-avatar></div>
+        <div class="block" v-for="size in sizeList" :key="size">
+        </div>
+      </div>
+      <div class="info"></div>
   </div>
 </template>
 
@@ -10,5 +15,5 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 </style>
