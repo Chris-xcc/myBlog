@@ -23,6 +23,9 @@
         <router-link to tag="div" class="user" v-else>
           <div class="username">admin</div>
           <router-link to="/" tag="div" class="logout-bar">
+            <router-link to="/user" tag="div">
+              <div class="user-info">个人中心</div>
+            </router-link>
             <div class="logout" @click="logout">退出</div>
           </router-link>
         </router-link>
@@ -109,18 +112,19 @@ export default {
       bottom: 0px;
       right: 0px;
       height: 56px;
+      width: 70px;
       padding: 0 10px 0 10px;
       line-height: 54px;
       // background-color: red;
 
-      &:hover .logout-bar{
+      &:hover .logout-bar {
         display: block;
       }
-     
+
       .logout-bar {
         display: none;
 
-        .logout {
+        .logout,.user-info {
           // width: 50px;
           // float: right;
           height: 25px;
