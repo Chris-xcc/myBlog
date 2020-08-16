@@ -9,7 +9,7 @@ import getters from "./getters";
 Vue.use(Vuex)
 
 const state = {
-    token: '', //初始化token
+    token: window.localStorage.getItem('token')? window.localStorage.getItem('token'):'', //初始化token
 }
 
 const store = new Vuex.Store({
