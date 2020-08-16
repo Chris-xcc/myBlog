@@ -15,8 +15,7 @@ const Tag = () => import("@/views/Tag");
 const Login = () => import("@/views/Login");
 const Register = () => import("@/views/Register");
 const Forget = () => import("@/views/Forget");
-const UserInfo = () => import("@/views/UserInfo");
-const PostCollect = () => import("@/views/PostCollect");
+const User = () => import("@/views/User");
 
 const routes = [{
     path: '/',
@@ -35,24 +34,7 @@ const routes = [{
   }, {
     path: '/user',
     name: 'User',
-    component: UserInfo,
-    children: [
-      {
-      path: '/',
-      redirect: '/user/info'
-    },
-     {
-      path: '/user/info',
-      name: 'UserInfo',
-      component: UserInfo
-    },
-     {
-      path: '/user/collect',
-      name: 'PostCollect',
-      component: PostCollect
-    },
-   ]
-
+    component: User,
   },
   {
     path: '/forget',

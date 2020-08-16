@@ -1,5 +1,5 @@
 <template>
-  <div class="user-main">
+  <div class="user-info">
     <div class="main">1321321</div>
   </div>
 </template>

@@ -1,30 +1,31 @@
 <template>
   <home>
-    <div class="user-info">
-      <div class="container">
-        <user-left></user-left>
-        <user-main></user-main>
-      </div>
+    <div class="user">
+      <user-left></user-left>
+      <user-info>
+        <slot></slot>
+      </user-info>
     </div>
   </home>
 </template>
 
 <script>
 import Home from "./Home";
-import UserLeft from "@/components/user/UserLeft";
-import UserMain from "@/components/user/UserMain";
+import UserLeft from "@/components/user/Side/UserLeft";
+import UserInfo from "@/components/user/UserInfo";
+
 export default {
   name: "User",
   components: {
-    Home,
+    UserInfo,
     UserLeft,
-    UserMain,
+    Home,
   },
 };
 </script>
 
 <style lang="less" scoped>
-.container {
+.user {
   background-color: chartreuse;
   width: 1200px;
   display: flex;

@@ -1,9 +1,8 @@
 <template>
-    
+    <div class="post-collect"></div>
 </template>
 
 <script>
-    import Home from "./Home";
     export default {
         name: "PostCollect"
     }
