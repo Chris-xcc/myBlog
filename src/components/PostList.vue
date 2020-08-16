@@ -1,8 +1,10 @@
 <template>
   <div class="post-list">
-    <div class="post-list-wrapper" v-for="post in postList" :key="post.id" v-cloak>
-      <div class="title">{{post.title}}</div>
-      <div class="body">{{post.excerpt}}</div>
+    <div class="post-list-wrapper" v-for="post in postList" :key="post.id">
+      <router-link to="" tag="div">
+        <div class="title">{{post.title}}</div>
+        <div class="body">{{post.excerpt}}</div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -39,6 +41,10 @@ export default {
 .post-list-wrapper {
   margin-top: 20px;
   border: 1px solid black;
+
+  &:last-child{
+    margin-bottom: 20px;
+  }
 
   .title {
     margin: 10px;
