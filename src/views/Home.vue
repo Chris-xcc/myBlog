@@ -6,14 +6,12 @@
       </el-header>
       <el-main>
         <slot>
-         <!-- <Main></Main> -->
-          <PostDetail></PostDetail>
-          <!-- <post-list></post-list> -->
+         <Main></Main>
         </slot>
       </el-main>
-      <el-footer>
+      <!-- <el-footer>
         <Footer></Footer>
-      </el-footer>
+      </el-footer> -->
     </el-container>
   </div>
 </template>
@@ -40,7 +38,7 @@ export default {
 
 <style lang="less" scoped>
 .home {
-  // height: 100%;
+  height: 100%;
   background-color:#F5F5F5;
   .el-container {
     position: relative;
