@@ -3,7 +3,7 @@
     <search></search>
     <rss></rss>
       <day></day>
-      <news></news>
+      <random></random>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
 import Search from "./Search";
 import Rss from "./Rss";
 import Day from "./Day";
-import News from "./News";
+import Random from "./Random";
 
 export default {
   name: "MainSide",
@@ -19,7 +19,7 @@ export default {
     Search,
     Rss,
       Day,
-      News
+      Random
   },
 };
 </script>
