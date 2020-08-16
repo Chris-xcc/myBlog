@@ -17,19 +17,22 @@
         <el-menu-item index="/about">关于</el-menu-item>
       </el-menu>
       <div class="left-bar">
-        <router-link to='login' tag="div" class="login" v-if="1">
+        <router-link to="login" tag="div" class="login" v-if="!$store.state.token">
           <i class="el-icon-s-custom"></i>
         </router-link>
-        <router-link to="" tag="div" class="user" v-else>
-          <span>11111</span>
+        <router-link to tag="div" class="user" v-else>
+          <div class="username">admin</div>
+          <router-link to="/" tag="div" class="logout-bar">
+            <div class="logout" @click="logout">退出</div>
+          </router-link>
         </router-link>
       </div>
     </div>
-    <div class="banner"></div>
   </div>
 </template>
 
 <script>
+import { REMOVE_TOKEN } from "../store/mutations-types";
 export default {
   name: "Header",
   // props: {
@@ -44,6 +47,12 @@ export default {
   methods: {
     handleSelect(key, keyPath) {
       // console.log(key, keyPath);
+    },
+    logout() {
+      window.localStorage.setItem("token", "");
+      this.$store.commit({
+        type: REMOVE_TOKEN,
+      });
     },
   },
 };
@@ -61,6 +70,7 @@ export default {
   margin: 0 auto;
   width: 1200px;
   display: flex;
+  position: relative;
   i {
     cursor: pointer;
     font-size: 25px;
@@ -89,17 +99,38 @@ export default {
     // background-color: red;
     // justify-content: flex-end;
     margin: auto 20px;
+    cursor: pointer;
 
-    .search {
-      display: flex;
-      margin: auto 20px;
-      div {
-        margin: auto 0;
-        margin-left: 5px;
-      }
-    }
     .login {
       margin: auto 0;
+    }
+    .user {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      height: 56px;
+      padding: 0 10px 0 10px;
+      line-height: 54px;
+      // background-color: red;
+
+      &:hover .logout-bar{
+        display: block;
+      }
+     
+      .logout-bar {
+        display: none;
+
+        .logout {
+          // width: 50px;
+          // float: right;
+          height: 25px;
+          line-height: 25px;
+          text-align: center;
+          background-color: #545c64;
+          border: 1px solid wheat;
+          border-radius: 5px;
+        }
+      }
     }
   }
 }
