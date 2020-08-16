@@ -6,23 +6,23 @@
       </el-header>
       <el-main>
         <slot>
-         <Main></Main>
+          <!--          <Main></Main>-->
+          <post-detail></post-detail>
         </slot>
       </el-main>
       <!-- <el-footer>
         <Footer></Footer>
-      </el-footer> -->
+      </el-footer>-->
     </el-container>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer";
-import Main from "@/components/Main";
-import PostDetail from "../components/PostDetail";
-import PostList from "../components/PostList";
+import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
+import Main from "@/components/home/Main";
+import PostDetail from "@/components/post/PostDetail";
 
 export default {
   name: "Home",
@@ -31,7 +31,6 @@ export default {
     PostDetail,
     Footer,
     Main,
-    PostList
   },
 };
 </script>
@@ -39,10 +38,10 @@ export default {
 <style lang="less" scoped>
 .home {
   height: 100%;
-  background-color:#F5F5F5;
+  background-color: #f5f5f5;
   .el-container {
     position: relative;
-  height: 100%;
+    height: 100%;
   }
 
   .el-header {

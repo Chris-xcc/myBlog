@@ -35,7 +35,8 @@
 </template>
 
 <script>
-import { REMOVE_TOKEN } from "../store/mutations-types";
+import { REMOVE_TOKEN } from "../../store/mutations-types";
+
 export default {
   name: "Header",
   // props: {
@@ -124,7 +125,8 @@ export default {
       .logout-bar {
         display: none;
 
-        .logout,.user-info {
+        .logout,
+        .user-info {
           // width: 50px;
           // float: right;
           height: 25px;

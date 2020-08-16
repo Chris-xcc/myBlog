@@ -17,10 +17,10 @@ export default {
         require("@/assets/img/Captain Marvel.jpg"),
         require("@/assets/img/Carry White.jpg"),
         require("@/assets/img/20200307203002.jpg"),
-        require("@/assets/img/background.jpg")
-      ]
+        require("@/assets/img/background.jpg"),
+      ],
     };
-  }
+  },
 };
 </script>
 

@@ -31,9 +31,9 @@ export default {
     display: flex;
     margin: 10px 10px 0 10px;
 
-    .icon{
-    font-size: 18px;
-    margin: auto 2px;
+    .icon {
+      font-size: 18px;
+      margin: auto 2px;
     }
   }
   .rss-info {

@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { get } from "@/api/services/instance";
+
 export default {
   name: "Comment",
   data() {
@@ -23,8 +25,7 @@ export default {
   },
   methods: {
     getComment() {
-      this.$axios
-        .get("/posts/20/comments/")
+      get("/posts/20/comments/")
         .then((response) => {
           this.comment = response.data;
           // console.log(response.data);

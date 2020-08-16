@@ -52,8 +52,8 @@
 
 <script>
 import Home from "./Home";
-import { post } from "../api/services/instance";
-import { SET_TOKEN } from "../store/mutations-types";
+import { post } from "@/api/services/instance";
+import { SET_TOKEN } from "@/store/mutations-types";
 
 export default {
   name: "Login",

@@ -2,7 +2,7 @@
   <home>
     <div class="forget">
       <div class="container">
-                <div class="top">忘记密码</div>
+        <div class="top">忘记密码</div>
 
         <el-form :model="forgetForm" ref="forgetFormRef" status-icon>
           <el-form-item>
@@ -37,8 +37,8 @@
 
 <script>
 import Home from "./Home";
-import { post } from "../api/services/instance";
-import { SET_TOKEN } from "../store/mutations-types";
+import { post } from "@/api/services/instance";
+import { SET_TOKEN } from "@/store/mutations-types";
 
 export default {
   name: "Forget",
@@ -60,7 +60,6 @@ export default {
             .then((response) => {
               // this.Authorization = response.data.token;
               // console.log(this.token);
-              
             })
             .catch((err) => {
               console.log(err);

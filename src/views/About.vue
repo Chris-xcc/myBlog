@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.about{
+.about {
   height: 100%;
 }
 </style>

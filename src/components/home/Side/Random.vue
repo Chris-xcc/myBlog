@@ -57,7 +57,7 @@ export default {
       }
       .post-title {
         font-size: 14px;
-        color:	#5F9EA0;
+        color: #5f9ea0;
       }
     }
   }

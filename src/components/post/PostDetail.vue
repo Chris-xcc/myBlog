@@ -33,7 +33,7 @@
 import PostSide from "./PostSide";
 import Breadcrumb from "./Breadcrumb";
 import Comment from "./Comment";
-import { get, post } from "../api/services/instance";
+import { get, post } from "@/api/services/instance";
 
 export default {
   name: "PostDetail",

@@ -30,19 +30,19 @@ export default {
   .title {
     margin: 10px;
     display: flex;
-    .icon{
+    .icon {
       font-size: 20px;
       margin: auto 2px;
     }
   }
-  .time{
+  .time {
     margin: auto 10px;
     font-size: 15px;
   }
-  .info{
+  .info {
     margin: 10px;
     font-size: 12px;
-    color:#696969;
+    color: #696969;
   }
 }
 </style>

@@ -2,7 +2,7 @@
   <home>
     <div class="register">
       <div class="container">
-                <div class="top">注册</div>
+        <div class="top">注册</div>
 
         <el-form :model="registerForm" ref="registerFormRef" status-icon>
           <el-form-item>

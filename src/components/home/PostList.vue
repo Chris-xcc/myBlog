@@ -1,7 +1,7 @@
 <template>
   <div class="post-list">
     <div class="post-list-wrapper" v-for="post in postList" :key="post.id">
-      <router-link to="" tag="div">
+      <router-link to tag="div">
         <div class="title">{{post.title}}</div>
         <div class="body">{{post.excerpt}}</div>
       </router-link>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { get } from "../api/services/instance";
+import { get } from "@/api/services/instance";
 
 export default {
   name: "PostList",
@@ -42,7 +42,7 @@ export default {
   margin-top: 20px;
   border: 1px solid black;
 
-  &:last-child{
+  &:last-child {
     margin-bottom: 20px;
   }
 

@@ -44,8 +44,6 @@ export default {
     .side {
       // background-color: chartreuse;
     }
-
- 
   }
 }
 </style>>

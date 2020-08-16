@@ -25,33 +25,6 @@
                 <li class="item-list">以增加.你们朋</li>
               </ul>
             </div>
-            <div class="item">
-              <div class="item-name">具有这种什么手机</div>
-              <ul class="list">
-                <li class="item-list">以增加.你们朋</li>
-                <li class="item-list">以增加.你们朋</li>
-                <li class="item-list">以增加.你们朋</li>
-                <li class="item-list">以增加.你们朋</li>
-              </ul>
-            </div>
-            <div class="item">
-              <div class="item-name">具有这种什么手机</div>
-              <ul class="list">
-                <li class="item-list">以增加.你们朋</li>
-                <li class="item-list">以增加.你们朋</li>
-                <li class="item-list">以增加.你们朋</li>
-                <li class="item-list">以增加.你们朋</li>
-              </ul>
-            </div>
-            <div class="item">
-              <div class="item-name">具有这种什么手机</div>
-              <ul class="list">
-                <li class="item-list">以增加.你们朋</li>
-                <li class="item-list">以增加.你们朋</li>
-                <li class="item-list">以增加.你们朋</li>
-                <li class="item-list">以增加.你们朋</li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>
