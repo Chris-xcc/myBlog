@@ -1,6 +1,5 @@
 <template>
   <div class="post-list">
-    <Nav></Nav>
     <div class="post-list-wrapper" v-for="post in postList" :key="post.id" v-cloak>
       <div class="title">{{post.title}}</div>
       <div class="body">{{post.excerpt}}</div>
@@ -9,6 +8,8 @@
 </template>
 
 <script>
+import { get } from "../api/services/instance";
+
 export default {
   name: "PostList",
   data() {
@@ -21,8 +22,7 @@ export default {
   },
   methods: {
     getPostList() {
-      this.$axios
-        .get("/posts/")
+      get("/posts/")
         .then((response) => {
           this.postList = response.data.results;
           // console.log(response.data.results);
@@ -43,6 +43,7 @@ export default {
   .title {
     margin: 10px;
   }
+
   .body {
     margin: 10px;
   }
