@@ -15,6 +15,7 @@ const Category = () => import("@/views/Category");
 const Tag = () => import("@/views/Tag");
 const Login = () => import("@/views/Login");
 const Register = () => import("@/views/Register");
+const Forget = () => import("@/views/Forget");
 
 const routes = [{
     path: '/',
@@ -30,6 +31,11 @@ const routes = [{
     path: '/register',
     name: 'Register',
     component: Register
+  },
+  {
+    path: '/forget',
+    name: 'Forget',
+    component: Forget
   },
   {
     path: '/category',
