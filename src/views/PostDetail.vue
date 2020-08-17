@@ -12,17 +12,7 @@
             </div>
             <div class="conent">{{post.content}}</div>
           </div>
-          <div class="bottom-bar">
-            <div class="comment">评论</div>
-            <el-form :model="commentForm">
-              <el-form-item>
-                <el-input v-model="commentForm.text" type="textarea" resize="none" rows="5"></el-input>
-              </el-form-item>
-              <el-form-item size="large">
-                <el-button type="primary" class="button" @click="postComment()">发表</el-button>
-              </el-form-item>
-            </el-form>
-          </div>
+          <comment-form></comment-form>
           <comment></comment>
         </div>
         <post-side></post-side>
@@ -36,26 +26,24 @@ import Home from "./Home";
 import PostSide from "../components/post/PostSide";
 import Breadcrumb from "../components/post/Breadcrumb";
 import Comment from "../components/post/Comment";
+import CommentForm from "../components/post/CommentForm";
 import { get, post } from "@/api/services/instance";
 
 export default {
   name: "PostDetail",
   components: {
+    CommentForm,
     Home,
     Breadcrumb,
     PostSide,
     Comment,
+    CommentForm,
   },
   data() {
     return {
       post: "",
       category: "",
       tag: "",
-      comment: "",
-      commentForm: {
-        post: this.$route.params.id,
-        text: "",
-      },
     };
   },
   created() {
@@ -86,18 +74,6 @@ export default {
             console.log(error);
           });
       }
-    },
-    postComment() {
-      post({ url: "comments/", data: this.commentForm })
-        .then((response) => {
-          location.reload();
-          alert("成功");
-          console.log(response);
-        })
-        .catch((err) => {
-          alert("失败");
-          console.log(err);
-        });
     },
   },
 };
@@ -140,26 +116,6 @@ export default {
         font-size: 20px;
         text-align: left;
         letter-spacing: 100px;
-      }
-    }
-    .bottom-bar {
-      // background-color: greenyellow;
-      margin: 20px;
-      padding: 10px;
-      // border: 1px solid black;
-      // border-radius: 20px;
-      .comment {
-        margin: 10px;
-      }
-
-      .el-form-item {
-        margin-bottom: 10px;
-        // /deep/ .el-input__inner {
-        //   height: 250px;
-        // }
-        .button {
-          float: right;
-        }
       }
     }
   }

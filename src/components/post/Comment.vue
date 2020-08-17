@@ -20,12 +20,12 @@ export default {
       comment: "",
     };
   },
-  created() {
-    this.getComment();
+  created () {
+    this.getComment()
   },
   methods: {
-    getComment() {
-      get("/posts/20/comments/")
+     getComment() {
+      get("/posts/" + this.$route.params.id + "/comments/")
         .then((response) => {
           this.comment = response.data;
           // console.log(response.data);
@@ -34,7 +34,7 @@ export default {
           console.log(error);
         });
     },
-  },
+  }
 };
 </script>
 
