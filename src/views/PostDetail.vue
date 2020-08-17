@@ -3,7 +3,7 @@
     <div class="post-detail">
       <div class="container">
         <div class="wrapper">
-          <breadcrumb></breadcrumb>
+          <breadcrumb :title="title"></breadcrumb>
           <div class="post-detail">
             <div class="title">{{post.title}}</div>
             <div class="bar">
@@ -37,6 +37,7 @@ export default {
   },
   data() {
     return {
+      title: "",
       post: "",
       category: "",
       tag: "",
@@ -50,6 +51,7 @@ export default {
       if (this.$route.params.id)
         get("/posts/" + this.$route.params.id)
           .then((response) => {
+            this.title = response.data.title;
             this.post = response.data;
             this.category = response.data.category.name;
             this.tag = response.data.tag.name;
@@ -61,6 +63,7 @@ export default {
       else {
         get("/posts/1")
           .then((response) => {
+            this.title = response.data.title;
             this.post = response.data;
             this.category = response.data.category.name;
             this.tag = response.data.tag.name;
