@@ -9,6 +9,7 @@ VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err);
 }
 const Home = () => import('@/views/Home.vue')
+const PostDetail = () => import("@/views/PostDetail");
 const About = () => import( /* webpackChunkName: "about" */ '@/views/About.vue')
 const Category = () => import("@/views/Category");
 const Tag = () => import("@/views/Tag");
@@ -18,10 +19,25 @@ const Forget = () => import("@/views/Forget");
 const User = () => import("@/views/User");
 const PostCollect = () => import("@/components/user/PostCollect");
 const UserInfo = () => import("@/components/user/UserInfo");
+
 const routes = [{
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+  },
+  {
+    path: '/post/',
+    redirect: '/post/1'
+  },
+  {
+    path: '/post/1',
+    name: 'PostDetail',
+    component: PostDetail
+  },
+  {
+    path: '/post/:id',
+    name: 'PostDetail',
+    component: PostDetail
   },
   {
     path: '/login',
@@ -36,21 +52,21 @@ const routes = [{
     path: '/user',
     name: 'User',
     component: User,
-    children: [
+    children: [{
+        path: '/',
+        redirect: '/user/info'
+      },
       {
-      path: '/',
-      redirect: '/user/info'
-    }, 
+        path: '/user/info',
+        name: 'UserInfo',
+        component: UserInfo
+      },
       {
-      path: '/user/info',
-      name: 'UserInfo',
-      component: UserInfo
-    }, 
-    {
-      path: '/user/collect',
-      name: 'PostCollect',
-      component: PostCollect
-    }, ]
+        path: '/user/collect',
+        name: 'PostCollect',
+        component: PostCollect
+      },
+    ]
 
   },
   {

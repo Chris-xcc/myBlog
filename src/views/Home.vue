@@ -6,7 +6,8 @@
       </el-header>
       <el-main>
         <slot>
-          <post-detail></post-detail>
+          <!-- <post-detail></post-detail> -->
+          <Main></Main>
         </slot>
       </el-main>
       <!-- <el-footer>
@@ -21,13 +22,11 @@
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import Main from "../components/home/Main";
-import PostDetail from "@/components/post/PostDetail";
 
 export default {
   name: "Home",
   components: {
     Header,
-    PostDetail,
     Footer,
     Main,
   },

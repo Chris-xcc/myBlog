@@ -1,7 +1,7 @@
 <template>
   <div class="post-list">
     <div class="post-list-wrapper" v-for="post in postList" :key="post.id">
-      <router-link to tag="div">
+      <router-link :to="'/post/' + post.id"  tag="div">
         <div class="title">{{post.title}}</div>
         <div class="body">{{post.excerpt}}</div>
       </router-link>

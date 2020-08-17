@@ -1,43 +1,47 @@
 <template>
-  <div class="post-detail">
-    <div class="container">
-      <div class="wrapper">
-        <breadcrumb></breadcrumb>
-        <div class="post-detail">
-          <div class="title">{{post.title}}</div>
-          <div class="bar">
-            <div class="category">{{category}}</div>
-            <div class="tag" v-if="tag">{{tag}}</div>
+  <home>
+    <div class="post-detail">
+      <div class="container">
+        <div class="wrapper">
+          <breadcrumb></breadcrumb>
+          <div class="post-detail">
+            <div class="title">{{post.title}}</div>
+            <div class="bar">
+              <div class="category">{{category}}</div>
+              <div class="tag" v-if="tag">{{tag}}</div>
+            </div>
+            <div class="conent">{{post.content}}</div>
           </div>
-          <div class="conent">{{post.content}}</div>
+          <div class="bottom-bar">
+            <div class="comment">评论</div>
+            <el-form :model="commentForm">
+              <el-form-item>
+                <el-input v-model="commentForm.text" type="textarea" resize="none" rows="5"></el-input>
+              </el-form-item>
+              <el-form-item size="large">
+                <el-button type="primary" class="button" @click="postComment()">发表</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
+          <comment></comment>
         </div>
-        <div class="bottom-bar">
-          <div class="comment">评论</div>
-          <el-form :model="commentForm">
-            <el-form-item>
-              <el-input v-model="commentForm.text" type="textarea" resize="none" rows="5"></el-input>
-            </el-form-item>
-            <el-form-item size="large">
-              <el-button type="primary" class="button" @click="postComment()">发表</el-button>
-            </el-form-item>
-          </el-form>
-        </div>
-        <comment></comment>
+        <post-side></post-side>
       </div>
-      <post-side></post-side>
     </div>
-  </div>
+  </home>
 </template>
 
 <script>
-import PostSide from "./PostSide";
-import Breadcrumb from "./Breadcrumb";
-import Comment from "./Comment";
+import Home from "./Home";
+import PostSide from "../components/post/PostSide";
+import Breadcrumb from "../components/post/Breadcrumb";
+import Comment from "../components/post/Comment";
 import { get, post } from "@/api/services/instance";
 
 export default {
   name: "PostDetail",
   components: {
+    Home,
     Breadcrumb,
     PostSide,
     Comment,
@@ -59,7 +63,7 @@ export default {
   },
   methods: {
     getPosts() {
-      get("/posts/1/")
+      get("/posts/" + this.$route.params.id)
         .then((response) => {
           this.post = response.data;
           this.category = response.data.category.name;
