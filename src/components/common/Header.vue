@@ -11,10 +11,10 @@
         :router="true"
       >
         <el-menu-item index="/">首页</el-menu-item>
-        <el-menu-item index="category">分类</el-menu-item>
-        <el-menu-item index="tag">标签</el-menu-item>
+        <el-menu-item index="/category">分类</el-menu-item>
+        <el-menu-item index="/tag">标签</el-menu-item>
         <!-- <el-menu-item index="archives">归档</el-menu-item> -->
-        <el-menu-item index="about">关于</el-menu-item>
+        <el-menu-item index="/about">关于</el-menu-item>
       </el-menu>
       <div class="left-bar">
         <router-link to="login" tag="div" class="login" v-if="!$store.state.token">
