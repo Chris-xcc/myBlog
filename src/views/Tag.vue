@@ -5,25 +5,9 @@
         <h1>标签</h1>
       </div>
       <div class="list">
-        <div class="item">
-          <div class="item-title">fwaeffwa</div>
-          <div class="item-num">11</div>
-        </div>
-        <div class="item">
-          <div class="item-title">fwaeffwa</div>
-          <div class="item-num">11</div>
-        </div>
-        <div class="item">
-          <div class="item-title">fwaeffwa</div>
-          <div class="item-num">11</div>
-        </div>
-        <div class="item">
-          <div class="item-title">fwaeffwa</div>
-          <div class="item-num">11</div>
-        </div>
-        <div class="item">
-          <div class="item-title">fwaeffwa</div>
-          <div class="item-num">11</div>
+        <div class="item" v-for="tag in tags" :key="tag.id">
+          <div class="item-title">{{tag.name}}</div>
+          <div class="item-num"></div>
         </div>
       </div>
     </div>
@@ -32,10 +16,31 @@
 
 <script>
 import Home from "./Home";
+import { get } from "../api/services/instance";
+
 export default {
   name: "Tag",
   components: {
     Home,
+  },
+  data() {
+    return {
+      tags: [],
+    };
+  },
+  created() {
+    this.getTags()
+  },
+  methods: {
+    getTags() {
+      get('/tags')
+      .then((response)=>{
+        this.tags = response.data;
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    },
   },
 };
 </script>
