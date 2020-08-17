@@ -26,7 +26,6 @@ export default {
 
 <style lang="less" scoped>
 .user {
-  background-color: chartreuse;
   width: 1200px;
   display: flex;
 }
