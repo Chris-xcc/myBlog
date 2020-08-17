@@ -5,25 +5,11 @@
         <h1>分类</h1>
       </div>
       <div class="list">
-        <div class="item">
-          <div class="item-title">fwaeffwa</div>
-          <div class="item-num">11</div>
-        </div>
-        <div class="item">
-          <div class="item-title">fwaeffwa</div>
-          <div class="item-num">11</div>
-        </div>
-        <div class="item">
-          <div class="item-title">fwaeffwa</div>
-          <div class="item-num">11</div>
-        </div>
-        <div class="item">
-          <div class="item-title">fwaeffwa</div>
-          <div class="item-num">11</div>
-        </div>
-        <div class="item">
-          <div class="item-title">fwaeffwa</div>
-          <div class="item-num">11</div>
+        <div class="item" v-for=" category in categorys" :key="category.id">
+          <router-link :to="'?category=' + category.id" tag="div">
+            <div class="item-title">{{category.name}}</div>
+            <div class="item-num"></div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -32,10 +18,31 @@
 
 <script>
 import Home from "./Home";
+import { get } from "../api/services/instance";
+
 export default {
   name: "Category",
   components: {
     Home,
+  },
+  data() {
+    return {
+      categorys: [],
+    };
+  },
+  created() {
+    this.getCategory();
+  },
+  methods: {
+    getCategory() {
+      get("/categorys/")
+        .then((response) => {
+          this.categorys = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
