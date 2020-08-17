@@ -1,7 +1,7 @@
 <template>
   <div class="comment">
     <div class="comment-form">
-      <div class="bottom-bar">
+      <div class="bottom-bar" v-if="$store.state.token">
         <div class="body">评论</div>
         <el-form :model="commentForm">
           <el-form-item>
@@ -11,6 +11,14 @@
             <el-button type="primary" class="button" @click="postComment">发表</el-button>
           </el-form-item>
         </el-form>
+      </div>
+      <div class="bottom-bar-auth" v-else>
+        <router-link to="/login" tag="div" class="login">
+          <div>
+            <span>登录评论</span>
+            <i class="el-icon-s-custom"></i>
+          </div>
+        </router-link>
       </div>
     </div>
     <div class="talk-bar">
@@ -89,6 +97,17 @@ export default {
     .button {
       float: right;
     }
+  }
+}
+.bottom-bar-auth {
+  height: 117px;
+  border: 1px solid #000;
+  background-color: #fff;
+  display: flex;
+  margin: 40px;
+  .login {
+    margin: auto;
+    cursor: pointer;
   }
 }
 .talk-bar {

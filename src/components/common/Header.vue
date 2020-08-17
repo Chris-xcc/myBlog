@@ -17,7 +17,7 @@
         <el-menu-item index="/about">关于</el-menu-item>
       </el-menu>
       <div class="left-bar">
-        <router-link to="login" tag="div" class="login" v-if="!$store.state.token">
+        <router-link to="/login" tag="div" class="login" v-if="!$store.state.token">
           <i class="el-icon-s-custom"></i>
         </router-link>
         <router-link to tag="div" class="user" v-else>
