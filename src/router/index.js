@@ -16,7 +16,8 @@ const Login = () => import("@/views/Login");
 const Register = () => import("@/views/Register");
 const Forget = () => import("@/views/Forget");
 const User = () => import("@/views/User");
-
+const PostCollect = () => import("@/components/user/PostCollect");
+const UserInfo = () => import("@/components/user/UserInfo");
 const routes = [{
     path: '/',
     name: 'Home',
@@ -35,6 +36,22 @@ const routes = [{
     path: '/user',
     name: 'User',
     component: User,
+    children: [
+      {
+      path: '/',
+      redirect: '/user/info'
+    }, 
+      {
+      path: '/user/info',
+      name: 'UserInfo',
+      component: UserInfo
+    }, 
+    {
+      path: '/user/collect',
+      name: 'PostCollect',
+      component: PostCollect
+    }, ]
+
   },
   {
     path: '/forget',

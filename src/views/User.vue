@@ -2,9 +2,7 @@
   <home>
     <div class="user">
       <user-left></user-left>
-      <user-info>
-        <slot></slot>
-      </user-info>
+      <router-view></router-view>
     </div>
   </home>
 </template>

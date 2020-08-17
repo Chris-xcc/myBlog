@@ -6,12 +6,13 @@
         background-color="#545c64"
         text-color="#fff"
         active-text-color="#ffd04b"
+        router
       >
-        <el-menu-item index="2">
+        <el-menu-item index="info">
           <i class="el-icon-menu"></i>
           <span slot="title">个人资料</span>
         </el-menu-item>
-        <el-menu-item index="3">
+        <el-menu-item index="collect">
           <i class="el-icon-document"></i>
           <span slot="title">收藏列表</span>
         </el-menu-item>
