@@ -27,7 +27,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url("@/assets/css/side/border.less");
 .user-info {
   width: 100%;
   height: 300px;
@@ -37,6 +36,9 @@ export default {
     padding: 40px;
     display: flex;
     justify-content: space-around;
+    border-radius: 20px;
+    border: 1px solid black;
+    box-shadow: 0 0 15px rgb(39, 37, 37);
   }
 
   .info {
