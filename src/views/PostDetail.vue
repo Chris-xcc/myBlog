@@ -53,8 +53,8 @@ export default {
       tag: "",
       comment: "",
       commentForm: {
-        post: "20",
-        text: "test2",
+        post: this.$route.params.id,
+        text: "",
       },
     };
   },
@@ -63,16 +63,29 @@ export default {
   },
   methods: {
     getPosts() {
-      get("/posts/" + this.$route.params.id)
-        .then((response) => {
-          this.post = response.data;
-          this.category = response.data.category.name;
-          this.tag = response.data.tag.name;
-          // console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      if (this.$route.params.id)
+        get("/posts/" + this.$route.params.id)
+          .then((response) => {
+            this.post = response.data;
+            this.category = response.data.category.name;
+            this.tag = response.data.tag.name;
+            // console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      else {
+        get("/posts/1")
+          .then((response) => {
+            this.post = response.data;
+            this.category = response.data.category.name;
+            this.tag = response.data.tag.name;
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
     postComment() {
       post({ url: "comments/", data: this.commentForm })
