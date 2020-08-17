@@ -1,10 +1,12 @@
 <template>
   <div class="rss">
-    <div class="title">
-      <div class="el-icon-s-promotion icon"></div>
-      <div>RSS订阅</div>
+    <div class="container">
+      <div class="title">
+        <div class="el-icon-s-promotion icon"></div>
+        <div>RSS订阅</div>
+      </div>
+      <div class="rss-info">有新文章时通知我</div>
     </div>
-    <div class="rss-info">有新文章时通知我</div>
   </div>
 </template>
 
@@ -15,13 +17,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.rss {
-  background-color: #fff;
-  margin-top: 20px;
-  border: 1px solid #dcdcdc;
-  box-shadow: 0 0 1px #c0c0c0;
-  border-radius: 20px;
+@import url("@/assets/css/side/border.less");
 
+.container {
   &:hover {
     transition: all 0.5s;
     // transform: translate(10 10);
