@@ -10,9 +10,8 @@
               <div class="category">{{category}}</div>
               <div class="tag" v-if="tag">{{tag}}</div>
             </div>
-            <div class="conent">{{post.content}}</div>
+            <div class="content">{{post.content}}</div>
           </div>
-          <comment-form></comment-form>
           <comment></comment>
         </div>
         <post-side></post-side>
@@ -26,18 +25,15 @@ import Home from "./Home";
 import PostSide from "../components/post/PostSide";
 import Breadcrumb from "../components/post/Breadcrumb";
 import Comment from "../components/post/Comment";
-import CommentForm from "../components/post/CommentForm";
 import { get, post } from "@/api/services/instance";
 
 export default {
   name: "PostDetail",
   components: {
-    CommentForm,
     Home,
     Breadcrumb,
     PostSide,
     Comment,
-    CommentForm,
   },
   data() {
     return {
@@ -114,8 +110,7 @@ export default {
 
       .content {
         font-size: 20px;
-        text-align: left;
-        letter-spacing: 100px;
+        line-height: 50px;
       }
     }
   }
