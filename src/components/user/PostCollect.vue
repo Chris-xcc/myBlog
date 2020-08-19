@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import User from "../../views/User";
-import { get } from "../../api/services/instance";
+import User from "@/views/User";
+import { PostList } from "@/api";
 
 export default {
   name: "PostCollect",
@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     getPostList() {
-      get("/posts/")
+      PostList()
         .then((response) => {
           this.postList = response.data.results;
           // console.log(response.data.results);

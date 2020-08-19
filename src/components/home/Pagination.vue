@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import { get } from "@/api/services/instance";
-import {Get_Page} from "../../store/mutations-types";
+import { Get_Page } from "@/store/mutations-types";
+import { TotalPost } from "@/api";
 
 export default {
   name: "Pagination",
@@ -26,12 +26,12 @@ export default {
     handleCurrentChange(page) {
       // console.log(`当前页: ${val}`);
       this.$store.commit({
-          type: Get_Page,
-          page: page
-      })
+        type: Get_Page,
+        page: page,
+      });
     },
     getTotalPost() {
-      get("/posts")
+      TotalPost()
         .then((response) => {
           // console.log(response.data.count)
           this.count = response.data.count;

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { get } from "@/api/services/instance";
+import { PostList } from "@/api";
 
 export default {
   name: "PostList",
@@ -22,12 +22,12 @@ export default {
   created() {
     this.getPostList();
   },
-  beforeUpdate () {
+  beforeUpdate() {
     this.getPostList();
   },
   methods: {
     getPostList() {
-      get("/posts/?page=" + this.$store.state.page)
+      PostList()
         .then((response) => {
           this.postList = response.data.results;
           // console.log(response.data.results);
