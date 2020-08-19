@@ -18,6 +18,6 @@ export default
     },
     [Get_Page](state,payload){
         // console.log(payload)
-        state.page=payload.page
+        state.page=window.localStorage.getItem('page')
     }
   }

@@ -5,6 +5,7 @@
     layout="prev, pager, next, jumper"
     :total="count"
     @current-change="handleCurrentChange"
+    :current-page.sync="currentPage"
   ></el-pagination>
 </template>
 
@@ -17,17 +18,22 @@ export default {
   data() {
     return {
       count: NaN,
+      currentPage: '',
     };
   },
   created() {
     this.getTotalPost();
   },
+  beforeUpdate () {
+    this.currentPage = this.$store.state.page
+  },
   methods: {
     handleCurrentChange(page) {
-      // console.log(`当前页: ${val}`);
+      // console.log(`当前页: ${page}`);
+      window.localStorage.setItem("page", page);
+      // currentPage = page
       this.$store.commit({
         type: Get_Page,
-        page: page,
       });
     },
     getTotalPost() {
@@ -44,5 +50,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+.el-pagination{
+  text-align: center;
+  margin: 50px;
+}
 </style>
