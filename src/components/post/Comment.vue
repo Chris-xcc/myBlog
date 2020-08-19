@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { get, post } from "../../api/services/instance";
+import { get, post } from "@/api/services/instance";
 
 export default {
   name: "Comment",
