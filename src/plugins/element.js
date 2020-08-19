@@ -15,6 +15,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   Avatar,
+  Pagination,
 } from 'element-ui';
 
 Vue.use(Main);
@@ -32,3 +33,4 @@ Vue.use(Input);
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
 Vue.use(Avatar);
+Vue.use(Pagination);

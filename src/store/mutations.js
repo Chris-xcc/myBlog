@@ -1,5 +1,6 @@
-import {SET_TOKEN,
-  REMOVE_TOKEN
+import {
+    SET_TOKEN,
+    REMOVE_TOKEN, Get_Page
 } from "./mutations-types";
 
 export default
@@ -8,11 +9,15 @@ export default
     //设置token等于外部传递进来的值
     [SET_TOKEN](state,payload){
         state.token = payload.token
-        // console.log(payload.token);
+        // console.log(payload);
     },
 
     [REMOVE_TOKEN](state){
         state.token = ''
         // console.log(payload.token);
     },
+    [Get_Page](state,payload){
+        // console.log(payload)
+        state.page=payload.page
+    }
   }

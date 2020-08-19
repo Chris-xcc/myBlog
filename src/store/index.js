@@ -10,6 +10,7 @@ Vue.use(Vuex)
 
 const state = {
     token: window.localStorage.getItem('token')? window.localStorage.getItem('token'):'', //初始化token
+    page: '1'
 }
 
 const store = new Vuex.Store({

@@ -2,12 +2,9 @@
   <div class="main">
     <div class="container">
       <div class="main-wrapper">
-        <div class="banner">
-          <banner></banner>
-        </div>
-        <div class="post-list">
-          <post-list></post-list>
-        </div>
+        <banner></banner>
+        <post-list></post-list>
+        <pagination></pagination>
       </div>
       <div class="side">
         <main-side></main-side>
@@ -20,12 +17,15 @@
 import Banner from "./Banner";
 import PostList from "./PostList";
 import MainSide from "./MainSide";
+import Pagination from "./Pagination";
+
 export default {
   name: "Main",
   components: {
     Banner,
     PostList,
     MainSide,
+    Pagination,
   },
 };
 </script>
