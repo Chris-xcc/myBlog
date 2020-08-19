@@ -3,7 +3,7 @@
     <div class="post-detail">
       <div class="container">
         <div class="wrapper">
-          <breadcrumb :title="title"></breadcrumb>
+          <breadcrumb :title="title" :category="category"></breadcrumb>
           <div class="post-detail">
             <div class="title">{{post.title}}</div>
             <div class="bar">
@@ -55,7 +55,7 @@ export default {
             this.post = response.data;
             this.category = response.data.category.name;
             this.tag = response.data.tag.name;
-            // console.log(response);
+            console.log(response.data);
           })
           .catch((error) => {
             console.log(error);

@@ -2,7 +2,7 @@
   <div class="breadcrumb">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item :to="{path:'/category'}">分类</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{path:'/category'}">{{category}}</el-breadcrumb-item>
       <el-breadcrumb-item>{{title}}</el-breadcrumb-item>
     </el-breadcrumb>
   </div>
@@ -11,7 +11,7 @@
 <script>
 export default {
   name: "Breadcrumb",
-  props: ["title"],
+  props: ["title", "category"],
 };
 </script>
 
