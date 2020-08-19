@@ -4,7 +4,6 @@
       <div class="main-wrapper">
         <banner></banner>
         <post-list></post-list>
-        <pagination></pagination>
       </div>
       <div class="side">
         <main-side></main-side>
@@ -17,7 +16,6 @@
 import Banner from "./Banner";
 import PostList from "./PostList";
 import MainSide from "./MainSide";
-import Pagination from "./Pagination";
 
 export default {
   name: "Main",
@@ -25,7 +23,6 @@ export default {
     Banner,
     PostList,
     MainSide,
-    Pagination,
   },
 };
 </script>

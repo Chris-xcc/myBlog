@@ -6,26 +6,38 @@
         <div class="body">{{post.excerpt}}</div>
       </router-link>
     </div>
+    <el-pagination
+      :page-size="10"
+      background
+      layout="prev, pager, next, jumper"
+      :total="count"
+      @current-change="handleCurrentChange"
+      :current-page="1"
+    ></el-pagination>
   </div>
 </template>
 
 <script>
-import { PostList } from "@/api";
+import { PostList, TotalPost } from "@/api";
+import { Get_Page } from "@/store/mutations-types";
 
 export default {
   name: "PostList",
   data() {
     return {
       postList: "",
+      count: NaN,
     };
   },
   created() {
     this.getPostList();
+    this.getTotalPost();
   },
-  beforeUpdate() {
-    this.getPostList();
+  destroyed() {
+    this.pageReset();
   },
   methods: {
+    // 获取文章列表
     getPostList() {
       PostList()
         .then((response) => {
@@ -35,6 +47,34 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    // 获取文章总数
+    getTotalPost() {
+      TotalPost()
+        .then((response) => {
+          // console.log(response.data.count)
+          this.count = response.data.count;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    // 页码改变时
+    handleCurrentChange(page) {
+      // console.log(`当前页: ${page}`);
+      window.localStorage.setItem("page", page);
+      // currentPage = page
+      this.$store.commit({
+        type: Get_Page,
+      });
+      this.getPostList();
+    },
+    // 页码重置为1
+    pageReset() {
+      window.localStorage.setItem("page", 1);
+      this.$store.commit({
+        type: Get_Page,
+      });
     },
   },
 };
@@ -56,5 +96,10 @@ export default {
   .body {
     margin: 10px;
   }
+}
+
+.el-pagination {
+  text-align: center;
+  margin: 50px;
 }
 </style>
