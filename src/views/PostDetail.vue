@@ -10,7 +10,7 @@
               <div class="category">{{category}}</div>
               <div class="tag" v-if="tag">{{tag}}</div>
             </div>
-            <div class="content">{{post.content}}</div>
+            <div class="content" v-html="post.content">{{post.content}}</div>
           </div>
           <comment></comment>
         </div>
@@ -112,8 +112,8 @@ export default {
       }
 
       .content {
-        font-size: 20px;
-        line-height: 50px;
+        // font-size: 20px;
+        // line-height: 50px;
       }
     }
   }
