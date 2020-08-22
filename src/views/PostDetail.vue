@@ -14,7 +14,7 @@
           </div>
           <comment></comment>
         </div>
-        <post-side></post-side>
+        <!-- <post-side></post-side> -->
       </div>
     </div>
   </home>
@@ -85,7 +85,8 @@ export default {
 .container {
   width: 1200px;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: center;
 
   .wrapper {
     width: 900px;

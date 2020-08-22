@@ -3,7 +3,7 @@
     <div class="post-list-wrapper" v-for="post in postList" :key="post.id">
       <router-link to tag="div">
         <div class="title">{{post.title}}</div>
-        <div class="body">{{post.excerpt}}</div>
+        <div class="body" v-html="post.excerpt">{{post.excerpt}}</div>
       </router-link>
     </div>
   </div>

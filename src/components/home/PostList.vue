@@ -3,7 +3,7 @@
     <div class="post-list-wrapper" v-for="post in postList" :key="post.id">
       <router-link :to="'/post/' + post.id" tag="div">
         <div class="title">{{post.title}}</div>
-        <div class="body">{{post.excerpt}}</div>
+        <div class="body" v-html="post.excerpt">{{post.excerpt}}</div>
       </router-link>
     </div>
     <el-pagination
@@ -19,14 +19,14 @@
 
 <script>
 import { PostList, TotalPost } from "@/api";
-import { Get_Page } from "@/store/mutations-types";
+import { GET_PAGE } from "@/store/mutations-types";
 
 export default {
   name: "PostList",
   data() {
     return {
       postList: "",
-      count: NaN,
+      count: NaN
     };
   },
   created() {
@@ -40,22 +40,22 @@ export default {
     // 获取文章列表
     getPostList() {
       PostList()
-        .then((response) => {
+        .then(response => {
           this.postList = response.data.results;
           // console.log(response.data.results);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
     // 获取文章总数
     getTotalPost() {
       TotalPost()
-        .then((response) => {
+        .then(response => {
           // console.log(response.data.count)
           this.count = response.data.count;
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     },
@@ -65,7 +65,7 @@ export default {
       window.localStorage.setItem("page", page);
       // currentPage = page
       this.$store.commit({
-        type: Get_Page,
+        type: GET_PAGE
       });
       this.getPostList();
     },
@@ -73,10 +73,10 @@ export default {
     pageReset() {
       window.localStorage.setItem("page", 1);
       this.$store.commit({
-        type: Get_Page,
+        type: GET_PAGE
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

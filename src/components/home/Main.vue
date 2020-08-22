@@ -6,7 +6,7 @@
         <post-list></post-list>
       </div>
       <div class="side">
-        <main-side></main-side>
+        <!-- <main-side></main-side> -->
       </div>
     </div>
   </div>
@@ -33,7 +33,8 @@ export default {
   // background-color: rgb(0, 140, 255);
   .container {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
+    justify-content: center;
 
     .main-wrapper {
       width: 900px;
