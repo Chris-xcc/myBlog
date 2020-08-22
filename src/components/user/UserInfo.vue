@@ -13,7 +13,7 @@
         </div>
         <div class="email">
           <span>邮箱:</span>
-          <span>admin@163.com</span>
+          <span>{{ $store.state.email }}</span>
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "UserMain",
+  name: "UserMain"
 };
 </script>
 

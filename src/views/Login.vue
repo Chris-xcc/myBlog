@@ -54,6 +54,7 @@
 import Home from "./Home";
 import { post } from "@/api/services/instance";
 import { SET_TOKEN } from "@/store/mutations-types";
+import {GET_EMAIL} from "../store/mutations-types";
 
 export default {
   name: "Login",
@@ -76,12 +77,18 @@ export default {
     login(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
+          window.localStorage.setItem("email", this.loginForm.username);
+          this.$store.commit({
+                type: GET_EMAIL,
+                email: this.loginForm.username
+              });
+              
           post({ url: "login/", data: this.loginForm })
             .then((response) => {
               // this.Authorization = response.data.token;
               // console.log(this.token);
               window.localStorage.setItem("token", "Token " + response.token);
-              console.log(response);
+              // console.log(response);
               this.$store.commit({
                 type: SET_TOKEN,
                 token: "Token " + response.token,

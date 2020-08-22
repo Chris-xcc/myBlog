@@ -1,7 +1,8 @@
 import {
   SET_TOKEN,
   REMOVE_TOKEN,
-  Get_Page,
+  GET_EMAIL,
+  GET_PAGE
 } from "./mutations-types";
 
 export default {
@@ -16,7 +17,11 @@ export default {
     state.token = ''
     // console.log(payload.token);
   },
-  [Get_Page](state, payload) {
+  [GET_EMAIL](state, payload) {
+    state.email = payload.email
+    console.log(payload.email);
+  },
+  [GET_PAGE](state, payload) {
     // console.log(payload)
     state.page = window.localStorage.getItem('page')
   },
