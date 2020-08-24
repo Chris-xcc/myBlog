@@ -57,6 +57,7 @@ export default {
       this.$store.commit({
         type: REMOVE_TOKEN,
       });
+      window.localStorage.setItem('username','')
     },
   },
 };

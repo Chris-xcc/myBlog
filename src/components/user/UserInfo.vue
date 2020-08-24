@@ -9,7 +9,7 @@
       <div class="info">
         <div class="username">
           <span>用户名:</span>
-          <span>admin</span>
+          <span>{{$store.state.username}}</span>
         </div>
         <div class="email">
           <span>邮箱:</span>
@@ -21,8 +21,29 @@
 </template>
 
 <script>
+import { GET_USERNAME } from "@/store/mutations-types";
+
 export default {
-  name: "UserMain"
+  name: "UserMain",
+  methods: {
+    getUser() {
+      this.$axios
+        .get("http://localhost:8000/users/1/")
+        .then((response) => {
+          console.log(response);
+          window.localStorage.setItem("username", response.data.username);
+          this.$store.commit({
+            type: GET_USERNAME,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  created() {
+    this.getUser();
+  },
 };
 </script>
 

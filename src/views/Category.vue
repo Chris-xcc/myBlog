@@ -18,7 +18,6 @@
 
 <script>
 import Home from "./Home";
-import { get } from "../api/services/instance";
 
 export default {
   name: "Category",
@@ -35,7 +34,7 @@ export default {
   },
   methods: {
     getCategory() {
-      get("/categorys/")
+      this.$axios.get("http://localhost:8000/categorys/")
         .then((response) => {
           this.categorys = response.data;
         })

@@ -9,9 +9,9 @@ import '@/assets/css/reset/normalize.css';
 
 Vue.config.productionTip = false
 
-// Vue.prototype.$axios = axios
+Vue.prototype.$axios = axios
 
-// axios.defaults.baseURL = '/';
+// axios.defaults.baseURL = '127.0.0.1:8000/';
 // axios.defaults.timeout = 5000
 
 new Vue({

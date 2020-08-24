@@ -1,12 +1,12 @@
-import {get, post} from "./services/instance";
-import store from "../store";
+// import {get, post} from "./services/instance";
+// import store from "../store";
 
-// 文章列表
-export const PostList = () => {
-    return get("/posts/?page=" + store.state.page)
-}
-// 文章总数
-export const TotalPost = () => {
-    return get("/posts")
-}
+// // 文章列表
+// export const PostList = () => {
+//     return get("/posts/?page=" + store.state.page)
+// }
+// // 文章总数
+// export const TotalPost = () => {
+//     return get("/posts")
+// }
 

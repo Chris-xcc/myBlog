@@ -3,8 +3,8 @@
     <div class="login">
       <div class="container">
         <div class="top">登录</div>
-        <el-form :model="loginForm" ref="loginFormRef" status-icon>
-          <el-form-item>
+        <el-form :model="loginForm" ref="loginForm" status-icon>
+          <el-form-item prop="username">
             <el-input
               type="text"
               v-model="loginForm.username"
@@ -13,7 +13,7 @@
               placeholder="邮箱"
             ></el-input>
           </el-form-item>
-          <el-form-item>
+          <el-form-item prop="password">
             <el-input
               type="password"
               v-model="loginForm.password"
@@ -27,10 +27,10 @@
           </el-form-item>-->
 
           <el-form-item>
-            <el-button type="primary" @click="login('loginFormRef')">登录</el-button>
+            <el-button type="primary" @click="login('loginForm')">登录</el-button>
           </el-form-item>
           <el-form-item>
-            <el-button @click="resetForm('loginFormRef')">重置</el-button>
+            <el-button @click="resetForm('loginForm')">重置</el-button>
           </el-form-item>
         </el-form>
         <div class="bottom-box">
@@ -38,10 +38,10 @@
             <router-link to="register" tag="div">
               <div class="register">注册</div>
             </router-link>
-            <span>|</span>
+            <!-- <span>|</span>
             <router-link to="forget" tag="div">
               <div class="forget">忘记密码</div>
-            </router-link>
+            </router-link>-->
           </div>
         </div>
       </div>
@@ -52,9 +52,8 @@
 
 <script>
 import Home from "./Home";
-import { post } from "@/api/services/instance";
 import { SET_TOKEN } from "@/store/mutations-types";
-import {GET_EMAIL} from "../store/mutations-types";
+import { GET_EMAIL } from "@/store/mutations-types";
 
 export default {
   name: "Login",
@@ -64,8 +63,8 @@ export default {
   data() {
     return {
       loginForm: {
-        username: "admin@163.com",
-        password: "admin",
+        username: "",
+        password: "",
         // remember: false,
       },
     };
@@ -79,19 +78,21 @@ export default {
         if (valid) {
           window.localStorage.setItem("email", this.loginForm.username);
           this.$store.commit({
-                type: GET_EMAIL,
-                email: this.loginForm.username
-              });
-              
-          post({ url: "login/", data: this.loginForm })
+            type: GET_EMAIL,
+            email: this.loginForm.username,
+          });
+          this.$axios
+            .post("http://localhost:8000/login/", {username:this.loginForm.username,password:this.loginForm.password})
             .then((response) => {
               // this.Authorization = response.data.token;
               // console.log(this.token);
-              window.localStorage.setItem("token", "Token " + response.token);
-              // console.log(response);
+              window.localStorage.setItem(
+                "token",
+                "Token " + response.data.token
+              );
               this.$store.commit({
                 type: SET_TOKEN,
-                token: "Token " + response.token,
+                token: "Token " + response.data.token,
               });
               this.$router.push("/");
               alert("登陆成功");
@@ -104,6 +105,10 @@ export default {
           return false;
         }
       });
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+      // console.log('reset');
     },
   },
 };

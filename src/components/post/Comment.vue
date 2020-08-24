@@ -34,8 +34,6 @@
 </template>
 
 <script>
-import { get, post } from "@/api/services/instance";
-
 export default {
   name: "Comment",
   data() {
@@ -52,7 +50,10 @@ export default {
   },
   methods: {
     getComment() {
-      get("/posts/" + this.$route.params.id + "/comments/")
+      this.$axios
+        .get(
+          "http://localhost:8000/posts/" + this.$route.params.id + "/comments/"
+        )
         .then((response) => {
           this.comment = response.data;
           console.log(response.data);
@@ -62,10 +63,11 @@ export default {
         });
     },
     postComment() {
-      post({ url: "comments/", data: this.commentForm })
+      this.$axios
+        .post("http://localhost:8000/comments/", this.commentForm)
         .then((response) => {
-          // console.log(response);
-          this.comment.splice(0, 0, response);
+          console.log(response);
+          this.comment.splice(0, 0, response.data);
           // console.log(this.comment)
           alert("成功");
         })

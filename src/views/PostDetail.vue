@@ -22,10 +22,9 @@
 
 <script>
 import Home from "./Home";
-import PostSide from "../components/post/PostSide";
-import Breadcrumb from "../components/post/Breadcrumb";
-import Comment from "../components/post/Comment";
-import { get, post } from "@/api/services/instance";
+import PostSide from "@/components/post/PostSide";
+import Breadcrumb from "@/components/post/Breadcrumb";
+import Comment from "@/components/post/Comment";
 
 export default {
   name: "PostDetail",
@@ -49,7 +48,8 @@ export default {
   methods: {
     getPosts() {
       if (this.$route.params.id)
-        get("/posts/" + this.$route.params.id)
+        this.$axios
+          .get("http://localhost:8000/posts/" + this.$route.params.id)
           .then((response) => {
             this.title = response.data.title;
             this.post = response.data;
@@ -61,7 +61,8 @@ export default {
             console.log(error);
           });
       else {
-        get("/posts/1")
+        this.$axios
+          .get("http://localhost:8000/posts/1/")
           .then((response) => {
             this.title = response.data.title;
             this.post = response.data;

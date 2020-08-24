@@ -39,7 +39,7 @@ export default {
   methods: {
     // 获取文章列表
     getPostList() {
-      PostList()
+      this.$axios.get('http://localhost:8000/posts/?page=' + this.$store.state.page)
         .then(response => {
           this.postList = response.data.results;
           // console.log(response.data.results);
@@ -50,7 +50,7 @@ export default {
     },
     // 获取文章总数
     getTotalPost() {
-      TotalPost()
+      this.$axios.get('http://localhost:8000/posts/')
         .then(response => {
           // console.log(response.data.count)
           this.count = response.data.count;

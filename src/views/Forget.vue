@@ -8,14 +8,14 @@
           <el-form-item>
             <el-input
               type="text"
-              v-model="forgetForm.email"
+              v-model="forgetForm.username"
               autocomplete="on"
               prefix-icon="el-icon-message"
               placeholder="邮箱"
             ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="forget('forgetFormRef')">确定</el-button>
+            <el-button type="primary" @click="forget()">确定</el-button>
           </el-form-item>
         </el-form>
         <div class="bottom-box">
@@ -37,8 +37,6 @@
 
 <script>
 import Home from "./Home";
-import { post } from "@/api/services/instance";
-import { SET_TOKEN } from "@/store/mutations-types";
 
 export default {
   name: "Forget",
@@ -48,28 +46,32 @@ export default {
   data() {
     return {
       forgetForm: {
-        email: "admin@163.com",
+        username: "test@163.com",
+
       },
     };
   },
   methods: {
-    login(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          post({ url: "login/", data: this.forgetForm })
+    forget() {
+     console.log(this.forgetForm.username);
+      this.$axios.patch( "http://127.0.0.1:8000/reset_password/", {"username": this.forgetForm.username} )
+
             .then((response) => {
-              // this.Authorization = response.data.token;
-              // console.log(this.token);
+              console.log(response);
             })
             .catch((err) => {
               console.log(err);
             });
-        } else {
-          console.log("error submit!!");
-          return false;
+          // this.$axios.get("users/1/")
+          //   .then((response) => {
+          //     console.log(response);
+          //   })
+          //   .catch((err) => {
+          //     console.log(err);
+          //   });
         }
-      });
-    },
+
+
   },
 };
 </script>

@@ -59,6 +59,7 @@
 
 <script>
 import Home from "./Home";
+
 export default {
   name: "Register",
   components: {
@@ -75,19 +76,16 @@ export default {
     };
   },
   methods: {
-    register(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.$axios
-            .post("users/", this.registerForm)
-            .then((response) => {
-              console.log(response);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }
-      });
+    register() {
+      this.$axios
+        .post( "http://localhost:8000/users/",  this.registerForm)
+        .then((response) => {
+          console.log(response);
+          // alert("登陆成功");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };
