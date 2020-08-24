@@ -5,10 +5,11 @@
         <h1>标签</h1>
       </div>
       <div class="list">
-        <div class="item" v-for="tag in tags" :key="tag.id">
+        <router-link  :to="'/tag/' + tag.id +'/'"
+                      tag="div" class="item" v-for="tag in tags" :key="tag.id">
           <div class="item-title">{{tag.name}}</div>
-          <div class="item-num"></div>
-        </div>
+          <div class="item-num">{{tag.id}}</div>
+        </router-link>
       </div>
     </div>
 
@@ -18,9 +19,7 @@
 
 export default {
   name: "List",
-  components: {
-    Home,
-  },
+
   data() {
     return {
       tags: [],
