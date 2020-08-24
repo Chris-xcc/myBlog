@@ -1,25 +1,26 @@
 <template>
-
-    <div class="tag">
-      <div class="top-bar">
-        <h1>标签</h1>
-      </div>
-      <div class="list">
-        <router-link  :to="'/tag/' + tag.id +'/'"
-                      tag="div" class="item" v-for="tag in tags" :key="tag.id">
-          <div class="item-title">{{tag.name}}</div>
-          <div class="item-num">{{tag.id}}</div>
-        </router-link>
-      </div>
+  <div class="tag">
+    <div class="top-bar">
+      <h1>标签</h1>
     </div>
-
+    <div class="list">
+      <router-link
+        :to="'/tag/' + tag.id +'/'"
+        tag="div"
+        class="item"
+        v-for="tag in tags"
+        :key="tag.id"
+      >
+        <div class="item-title">{{tag.name}}</div>
+        <div class="item-num">{{tag.id}}</div>
+      </router-link>
+    </div>
+  </div>
 </template>
 
 <script>
-
 export default {
   name: "List",
-
   data() {
     return {
       tags: [],

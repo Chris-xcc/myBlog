@@ -15,7 +15,7 @@ export default {
   components: {
     Home,
     TagPostList,
-    TagList
+    TagList,
   },
 };
 </script>

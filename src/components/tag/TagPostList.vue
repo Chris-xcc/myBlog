@@ -14,12 +14,12 @@
 
 <script>
 import Breadcrumb from "../post/Breadcrumb";
+
 export default {
   name: "TagPostList",
   components: {
     Breadcrumb,
   },
-
   data() {
     return {
       postList: "",
