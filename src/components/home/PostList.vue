@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       postList: "",
-      count: NaN
+      count: NaN,
     };
   },
   created() {
@@ -39,23 +39,25 @@ export default {
   methods: {
     // 获取文章列表
     getPostList() {
-      this.$axios.get('http://localhost:8000/posts/?page=' + this.$store.state.page)
-        .then(response => {
+      this.$axios
+        .get("http://localhost:8000/posts/?page=" + this.$store.state.page)
+        .then((response) => {
           this.postList = response.data.results;
           // console.log(response.data.results);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
     // 获取文章总数
     getTotalPost() {
-      this.$axios.get('http://localhost:8000/posts/')
-        .then(response => {
+      this.$axios
+        .get("http://localhost:8000/posts/")
+        .then((response) => {
           // console.log(response.data.count)
           this.count = response.data.count;
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
     },
@@ -65,7 +67,7 @@ export default {
       window.localStorage.setItem("page", page);
       // currentPage = page
       this.$store.commit({
-        type: GET_PAGE
+        type: GET_PAGE,
       });
       this.getPostList();
     },
@@ -73,10 +75,10 @@ export default {
     pageReset() {
       window.localStorage.setItem("page", 1);
       this.$store.commit({
-        type: GET_PAGE
+        type: GET_PAGE,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
