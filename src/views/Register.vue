@@ -1,9 +1,8 @@
 <template>
   <home>
     <div class="register">
-      <div class="container">
+      <div class="container" v-if="!newuser">
         <div class="top">注册</div>
-
         <el-form :model="registerForm" ref="registerFormRef" status-icon>
           <el-form-item>
             <el-input
@@ -42,7 +41,7 @@
             ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="register('registerFormRef')" style="width:100%">注册</el-button>
+            <el-button type="primary" @click="register()" style="width:100%">注册</el-button>
           </el-form-item>
         </el-form>
         <div class="bottom-box">
@@ -53,6 +52,7 @@
           </div>
         </div>
       </div>
+      <div class="container" style="text-align:center" v-else>{{message}}</div>
     </div>
   </home>
 </template>
@@ -68,11 +68,13 @@ export default {
   data() {
     return {
       registerForm: {
-        email: "test@163.com",
-        username: "test",
+        email: "test4@163.com",
+        username: "test4",
         password: "test",
         check_password: "test",
       },
+      newuser: false,
+      message: ''
     };
   },
   methods: {
@@ -80,7 +82,9 @@ export default {
       this.$axios
         .post( "http://localhost:8000/users/",  this.registerForm)
         .then((response) => {
-          console.log(response);
+          this.newuser = !this.newuser
+          this.message = response.data
+          // console.log(response);
           // alert("登陆成功");
         })
         .catch((err) => {
