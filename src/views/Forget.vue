@@ -1,14 +1,13 @@
 <template>
   <home>
     <div class="forget">
-      <div class="container">
+      <div class="container" v-if="!reset">
         <div class="top">忘记密码</div>
-
-        <el-form :model="forgetForm" ref="forgetFormRef" status-icon>
+        <el-form :model="forgetForm" ref="forgetForm" status-icon>
           <el-form-item>
             <el-input
               type="text"
-              v-model="forgetForm.username"
+              v-model="forgetForm.email"
               autocomplete="on"
               prefix-icon="el-icon-message"
               placeholder="邮箱"
@@ -30,6 +29,7 @@
           </div>
         </div>
       </div>
+      <div v-else class="container" style="text-align:center">{{message}}</div>
     </div>
   </home>
 </template>
@@ -46,32 +46,32 @@ export default {
   data() {
     return {
       forgetForm: {
-        username: "test@163.com",
-
+        email: "test@163.com",
       },
+      reset: false,
+      message:''
     };
   },
   methods: {
     forget() {
-     console.log(this.forgetForm.username);
-      this.$axios.patch( "http://127.0.0.1:8000/reset_password/", {"username": this.forgetForm.username} )
-
-            .then((response) => {
-              console.log(response);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-          // this.$axios.get("users/1/")
-          //   .then((response) => {
-          //     console.log(response);
-          //   })
-          //   .catch((err) => {
-          //     console.log(err);
-          //   });
-        }
-
-
+      this.$axios
+        .post("http://127.0.0.1:8000/password/", this.forgetForm)
+        .then((response) => {
+          this.reset = !this.reset
+          this.message = response.data
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      // this.$axios.get("users/1/")
+      //   .then((response) => {
+      //     console.log(response);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
+    },
   },
 };
 </script>

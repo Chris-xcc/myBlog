@@ -38,10 +38,10 @@
             <router-link to="register" tag="div">
               <div class="register">注册</div>
             </router-link>
-            <!-- <span>|</span>
+            <span>|</span>
             <router-link to="forget" tag="div">
               <div class="forget">忘记密码</div>
-            </router-link>-->
+            </router-link>
           </div>
         </div>
       </div>
