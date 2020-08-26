@@ -1,9 +1,9 @@
 <template>
   <home>
-    <div class="forget">
+    <div class="email-active">
       <div class="container" v-if="!email">
         <div class="top">账号激活</div>
-        <el-form :model="EmailForm" ref="forgetForm" status-icon>
+        <el-form :model="EmailForm" ref="EmailForm" status-icon>
           <el-form-item>
             <el-input
               type="text"
