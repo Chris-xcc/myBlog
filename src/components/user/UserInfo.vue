@@ -11,6 +11,32 @@
           <span>用户名:</span>
           <span>{{$store.state.username}}</span>
         </div>
+        <div class="change-password" v-if="show">
+          <el-form :model="passwordForm" ref="passwordForm" status-icon>
+            <el-form-item prop="password">
+              <el-input
+                type="password"
+                v-model="passwordForm.password"
+                autocomplete="on"
+                prefix-icon="el-icon-lock"
+                placeholder="新密码"
+              ></el-input>
+            </el-form-item>
+            <el-form-item prop="check_password">
+              <el-input
+                type="password"
+                v-model="passwordForm.check_password"
+                autocomplete="off"
+                prefix-icon="el-icon-key"
+                placeholder="确认密码"
+              ></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="change()">确定</el-button>
+            </el-form-item>
+          </el-form>
+        </div>
+        <div v-else>{{message}}</div>
         <div class="email">
           <span>邮箱:</span>
           <span>{{ $store.state.email }}</span>
@@ -23,13 +49,23 @@
 <script>
 import { GET_USERNAME } from "@/store/mutations-types";
 import { GET_EMAIL } from "@/store/mutations-types";
-import { get } from "@/api/services/instance";
+import { get, put, post } from "@/api/services/instance";
 
 export default {
   name: "UserMain",
+  data() {
+    return {
+      show: true,
+      message: "",
+      passwordForm: {
+        password: "",
+        check_password: "",
+      },
+    };
+  },
   methods: {
     getUser() {
-      get({ url: "http://localhost:8000/users/1/" })
+      get("/users/1/")
         .then((response) => {
           console.log(response);
           window.localStorage.setItem("email", response.data.email);
@@ -41,6 +77,17 @@ export default {
           this.$store.commit({
             type: GET_USERNAME,
           });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    change() {
+      put({ url: "/users/1/", data: this.passwordForm })
+        .then((response) => {
+          this.message = response.data;
+          this.show = !this.show;
+          console.log(response);
         })
         .catch((err) => {
           console.log(err);
