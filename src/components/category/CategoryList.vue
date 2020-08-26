@@ -19,6 +19,9 @@
 </template>
 
 <script>
+import { get } from "@/api/services/instance";
+import { CategoryList } from "@/api";
+
 export default {
   name: "CategoryList",
   data() {
@@ -31,8 +34,7 @@ export default {
   },
   methods: {
     getCategory() {
-      this.$axios
-        .get("http://localhost:8000/categorys/")
+      CategoryList()
         .then((response) => {
           this.categorys = response.data;
           console.log(response);

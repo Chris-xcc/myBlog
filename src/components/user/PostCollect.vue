@@ -11,6 +11,7 @@
 
 <script>
 import User from "@/views/User";
+import { PostList } from "@/api";
 
 export default {
   name: "PostCollect",
@@ -27,8 +28,7 @@ export default {
   },
   methods: {
     getPostList() {
-      this.$axios
-        .get("http://localhost:8000/posts/?page=" + this.$store.state.page)
+      PostList()
         .then((response) => {
           this.postList = response.data.results;
           // console.log(response.data.results);

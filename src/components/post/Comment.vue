@@ -8,7 +8,7 @@
             <el-input v-model="commentForm.text" type="textarea" resize="none" rows="5"></el-input>
           </el-form-item>
           <el-form-item size="large">
-            <el-button type="primary" class="button" @click="postComment">发表</el-button>
+            <el-button type="primary" class="button" @click="postComment()">发表</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -23,17 +23,44 @@
     </div>
     <div class="talk-bar">
       <div class="talk-detail" v-for="(value,index) in comment" :key="index">
-        <div class="info">
-          <div class="username">{{value.username}}</div>
-          <div class="time">{{value.created_time}}</div>
+        <div class v-if="!value.parent">
+          <div class="info">
+            <div class="username">{{value.username}}</div>
+            <div class="time">{{value.created_time}}</div>
+          </div>
+          <div class="text">{{value.text}}</div>
+          <div
+            class="talk-detail"
+            v-for="replay in comment"
+            :key="replay.id"
+            style="margin-left:40px"
+          >
+            <div class v-if="value.id==replay.parent">
+              <div class="info">
+                <div class="username">{{replay.username}}</div>
+                <div class="time">{{replay.created_time}}</div>
+              </div>
+              <div class="text">{{replay.text}}</div>
+              <div class v-for="a in comment" :key="a.id">
+                <div class v-if="a.parent==replay.id">
+                  <div class="info">
+                    <div class="username">{{a.username}}</div>
+                    <div class="time">{{a.created_time}}</div>
+                  </div>
+                  <div class="text">{{a.text}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="text">{{value.text}}</div>
       </div>
     </div>
   </div>
 </template>
-
+ 
 <script>
+import { get, post } from "@/api/services/instance";
+
 export default {
   name: "Comment",
   data() {
@@ -50,21 +77,17 @@ export default {
   },
   methods: {
     getComment() {
-      this.$axios
-        .get(
-          "http://localhost:8000/posts/" + this.$route.params.id + "/comments/"
-        )
+      get("/posts/" + this.$route.params.id + "/comments/")
         .then((response) => {
           this.comment = response.data;
-          console.log(response.data);
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);
         });
     },
     postComment() {
-      this.$axios
-        .post("http://localhost:8000/comments/", this.commentForm)
+      post({ url: "/comments/", data: this.commentForm })
         .then((response) => {
           console.log(response);
           this.comment.splice(0, 0, response.data);

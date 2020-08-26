@@ -14,6 +14,8 @@
 
 <script>
 import Breadcrumb from "../post/Breadcrumb";
+import { get } from "@/api/services/instance";
+
 export default {
   name: "CategoryPostList",
   components: {
@@ -32,12 +34,11 @@ export default {
   methods: {
     // 获取文章列表
     getPostList() {
-      this.$axios
-        .get("http://localhost:8000/categorys/" + this.$route.params.id + "/")
+      get("/categorys/" + this.$route.params.id + "/")
         .then((response) => {
           this.postList = response.data.post;
           this.category = response.data.name;
-          console.log(response.data);
+          // console.log(response.data);
         })
         .catch((error) => {
           console.log(error);

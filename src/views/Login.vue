@@ -53,7 +53,7 @@
 <script>
 import Home from "./Home";
 import { SET_TOKEN } from "@/store/mutations-types";
-import { GET_EMAIL } from "@/store/mutations-types";
+import { post } from "@/api/services/instance";
 
 export default {
   name: "Login",
@@ -73,38 +73,22 @@ export default {
     getRemember() {
       this.remember = !this.remember;
     },
-    login(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          window.localStorage.setItem("email", this.loginForm.username);
+    login() {
+      post({ url: "/login/", data: this.loginForm })
+        .then((response) => {
+          // this.Authorization = response.data.token;
+          console.log(response);
+          window.localStorage.setItem("token", "Token " + response.data.token);
           this.$store.commit({
-            type: GET_EMAIL,
-            email: this.loginForm.username,
+            type: SET_TOKEN,
+            token: "Token " + response.data.token,
           });
-          this.$axios
-            .post("http://localhost:8000/login/", {username:this.loginForm.username,password:this.loginForm.password})
-            .then((response) => {
-              // this.Authorization = response.data.token;
-              // console.log(this.token);
-              window.localStorage.setItem(
-                "token",
-                "Token " + response.data.token
-              );
-              this.$store.commit({
-                type: SET_TOKEN,
-                token: "Token " + response.data.token,
-              });
-              this.$router.push("/");
-              alert("登陆成功");
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
+          this.$router.push("/");
+          alert("登陆成功");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();

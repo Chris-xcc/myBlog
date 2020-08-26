@@ -22,15 +22,21 @@
 
 <script>
 import { GET_USERNAME } from "@/store/mutations-types";
+import { GET_EMAIL } from "@/store/mutations-types";
+import { get } from "@/api/services/instance";
 
 export default {
   name: "UserMain",
   methods: {
     getUser() {
-      this.$axios
-        .get("http://localhost:8000/users/1/")
+      get({ url: "http://localhost:8000/users/1/" })
         .then((response) => {
           console.log(response);
+          window.localStorage.setItem("email", response.data.email);
+          this.$store.commit({
+            type: GET_EMAIL,
+            email: response.data.email,
+          });
           window.localStorage.setItem("username", response.data.username);
           this.$store.commit({
             type: GET_USERNAME,

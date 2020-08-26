@@ -37,6 +37,7 @@
 
 <script>
 import Home from "./Home";
+import { post } from "../api/services/instance";
 
 export default {
   name: "Forget",
@@ -49,17 +50,16 @@ export default {
         email: "test@163.com",
       },
       reset: false,
-      message:''
+      message: "",
     };
   },
   methods: {
     forget() {
-      this.$axios
-        .post("http://127.0.0.1:8000/password/", this.forgetForm)
+      post({ url: "/password/", data: this.forgetForm })
         .then((response) => {
-          this.reset = !this.reset
-          this.message = response.data
-          console.log(response);
+          this.reset = !this.reset;
+          this.message = response.data;
+          // console.log(response);
         })
         .catch((err) => {
           console.log(err);

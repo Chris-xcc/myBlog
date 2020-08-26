@@ -26,7 +26,7 @@ export default {
     // console.log(payload)
     state.page = window.localStorage.getItem('page')
   },
-  [GET_USERNAME](state,payload){
+  [GET_USERNAME](state, payload) {
     state.username = window.localStorage.getItem('username')
   }
 }

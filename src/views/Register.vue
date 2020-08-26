@@ -59,6 +59,7 @@
 
 <script>
 import Home from "./Home";
+import { post } from "../api/services/instance";
 
 export default {
   name: "Register",
@@ -74,16 +75,15 @@ export default {
         check_password: "test",
       },
       newuser: false,
-      message: ''
+      message: "",
     };
   },
   methods: {
     register() {
-      this.$axios
-        .post( "http://localhost:8000/users/",  this.registerForm)
+      post({ url: "/users/", data: this.registerForm })
         .then((response) => {
-          this.newuser = !this.newuser
-          this.message = response.data
+          this.newuser = !this.newuser;
+          this.message = response.data;
           // console.log(response);
           // alert("登陆成功");
         })

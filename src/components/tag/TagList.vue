@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { TagList } from "@/api";
+
 export default {
   name: "List",
   data() {
@@ -31,8 +33,7 @@ export default {
   },
   methods: {
     getTags() {
-      this.$axios
-        .get("http://localhost:8000/tags/")
+      TagList()
         .then((response) => {
           this.tags = response.data;
         })
