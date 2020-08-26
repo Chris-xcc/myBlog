@@ -79,19 +79,4 @@ export default {
 
 <style lang="less" scoped>
 @import url("@/assets/css/login/login.less");
-
-.el-button {
-  width: 100%;
-}
-
-.bottom-box {
-  span {
-    margin: auto 5px;
-  }
-
-  .register,
-  .login {
-    cursor: pointer;
-  }
-}
 </style>

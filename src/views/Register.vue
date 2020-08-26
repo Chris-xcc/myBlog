@@ -46,6 +46,10 @@
         </el-form>
         <div class="bottom-box">
           <div class="right">
+            <router-link to="email_active" tag="div">
+              <div class="active">激活</div>
+            </router-link>
+            <span>|</span>
             <router-link to="login" tag="div">
               <div class="login">登录</div>
             </router-link>
@@ -97,8 +101,4 @@ export default {
 
 <style lang="less" scoped>
 @import url("@/assets/css/login/login.less");
-
-.login {
-  cursor: pointer;
-}
 </style>

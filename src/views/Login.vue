@@ -35,6 +35,10 @@
         </el-form>
         <div class="bottom-box">
           <div class="right">
+            <router-link to="email_active" tag="div">
+              <div class="active">激活</div>
+            </router-link>
+            <span>|</span>
             <router-link to="register" tag="div">
               <div class="register">注册</div>
             </router-link>
@@ -101,17 +105,4 @@ export default {
 
 <style lang="less" scoped>
 @import url("@/assets/css/login/login.less");
-
-.el-button {
-  width: 100%;
-}
-.bottom-box {
-  span {
-    margin: auto 5px;
-  }
-  .register,
-  .forget {
-    cursor: pointer;
-  }
-}
 </style>
