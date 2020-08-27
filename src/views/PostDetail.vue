@@ -49,7 +49,7 @@ export default {
   methods: {
     getPosts() {
       if (this.$route.params.id)
-        get("/posts/" + this.$route.params.id)
+        get("/posts/" + this.$route.params.id + '/')
           .then((response) => {
             this.title = response.data.title;
             this.post = response.data;
@@ -61,6 +61,7 @@ export default {
             console.log(error);
           });
       else {
+        this.$route.params.id = 1
         get("/posts/1/")
           .then((response) => {
             this.title = response.data.title;
