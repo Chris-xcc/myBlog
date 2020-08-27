@@ -138,11 +138,6 @@ const routes = [{
     ]
 },
 {
-    path: '/tag',
-    name: 'Tag',
-    component: Tag
-},
-{
     path: '/about',
     name: 'About',
     // route level code-splitting
@@ -154,7 +149,7 @@ const routes = [{
 
 const router = new VueRouter({
     routes,
-    // mode: 'history'
+    mode: 'history'
 })
 
 export default router

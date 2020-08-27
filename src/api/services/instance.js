@@ -15,7 +15,7 @@ import store from "@/store";
 export function get(config) {
   // 1.创建axios的实例
   const instance = axios.create({
-    baseURL: 'http://localhost:8000',
+    baseURL: '/api',
     timeout: 10000,
     method: 'get'
   })
@@ -37,7 +37,7 @@ export function get(config) {
 export function post(config) {
   // 1.创建axios的实例
   const instance = axios.create({
-    baseURL: 'http://localhost:8000',
+    baseURL: '/api',
     timeout: 10000,
     method: 'post'
   })
@@ -68,7 +68,7 @@ export function post(config) {
 export function put(config) {
   // 1.创建axios的实例
   const instance = axios.create({
-    baseURL: 'http://localhost:8000',
+    baseURL: '/api',
     timeout: 10000,
     method: 'put'
   })

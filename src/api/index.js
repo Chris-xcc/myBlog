@@ -7,14 +7,14 @@ export const PostList = () => {
 }
 // 文章总数
 export const TotalPost = () => {
-    return get("/posts")
+    return get("/posts/")
 }
 // 分类列表
 export const CategoryList = () => {
-    return get("/categorys")
+    return get("/categorys/")
 }
 // 标签列表
 export const TagList = () => {
-    return get("/tags")
+    return get("/tags/")
 }
 
