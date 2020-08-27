@@ -23,36 +23,11 @@
     </div>
     <div class="talk-bar">
       <div class="talk-detail" v-for="(value,index) in comment" :key="index">
-        <div class v-if="!value.parent">
-          <div class="info">
-            <div class="username">{{value.username}}</div>
-            <div class="time">{{value.created_time}}</div>
-          </div>
-          <div class="text">{{value.text}}</div>
-          <div
-            class="talk-detail"
-            v-for="replay in comment"
-            :key="replay.id"
-            style="margin-left:40px"
-          >
-            <div class v-if="value.id==replay.parent">
-              <div class="info">
-                <div class="username">{{replay.username}}</div>
-                <div class="time">{{replay.created_time}}</div>
-              </div>
-              <div class="text">{{replay.text}}</div>
-              <div class v-for="a in comment" :key="a.id">
-                <div class v-if="a.parent==replay.id">
-                  <div class="info">
-                    <div class="username">{{a.username}}</div>
-                    <div class="time">{{a.created_time}}</div>
-                  </div>
-                  <div class="text">{{a.text}}</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="info">
+          <div class="username">{{value.username}}</div>
+          <div class="time">{{value.created_time}}</div>
         </div>
+        <div class="text">{{value.text}}</div>
       </div>
     </div>
   </div>
