@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       forgetForm: {
-        email: "test@163.com",
+        email: "",
       },
       reset: false,
       message: "",

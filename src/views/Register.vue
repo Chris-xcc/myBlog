@@ -73,10 +73,10 @@ export default {
   data() {
     return {
       registerForm: {
-        email: "test4@163.com",
-        username: "test4",
-        password: "test",
-        check_password: "test",
+        email: "",
+        username: "",
+        password: "",
+        check_password: "",
       },
       newuser: false,
       message: "",

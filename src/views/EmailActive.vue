@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       EmailForm: {
-        email: "1486316634@qq.com",
+        email: "",
       },
       email: false,
       message: "",
