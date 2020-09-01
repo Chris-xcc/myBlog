@@ -36,7 +36,8 @@ export default {
 <style lang="less" scoped>
 .home {
   height: 100%;
-  background-color: #f5f5f5;
+  // background-color: #f5f5f5;
+  background-color: #fff;
   .el-container {
     position: relative;
     height: 100%;

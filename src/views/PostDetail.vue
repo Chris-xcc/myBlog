@@ -5,12 +5,14 @@
         <div class="wrapper">
           <breadcrumb :title="title" :category="category"></breadcrumb>
           <div class="post-detail">
-            <div class="title">{{post.title}}</div>
+            <div class="title">{{title}}</div>
             <div class="bar">
-              <div class="category">{{category}}</div>
-              <div class="tag" v-if="tag">{{tag}}</div>
+              <div class="time el-icon-date">{{time}}</div>
+              <div class="view el-icon-view">{{view}}</div>
+              <div class="category el-icon-collection">{{category}}</div>
+              <div class="tag el-icon-discount" v-if="tag">{{tag}}</div>
             </div>
-            <div class="content" v-html="post.content">{{post.content}}</div>
+            <div class="content markdown-body" v-html="post"></div>
           </div>
           <comment></comment>
         </div>
@@ -27,6 +29,8 @@ import Breadcrumb from "@/components/post/Breadcrumb";
 import Comment from "@/components/post/Comment";
 import { get } from "../api/services/instance";
 
+import marked from "marked";
+
 export default {
   name: "PostDetail",
   components: {
@@ -39,9 +43,19 @@ export default {
     return {
       title: "",
       post: "",
+      time: "",
+      view: "",
       category: "",
       tag: "",
     };
+  },
+  mounted() {
+    const link = document.createElement("link");
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.href =
+      "https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css";
+    document.head.appendChild(link);
   },
   created() {
     this.getPosts();
@@ -49,19 +63,21 @@ export default {
   methods: {
     getPosts() {
       if (this.$route.params.id)
-        get("/posts/" + this.$route.params.id + '/')
+        get("/posts/" + this.$route.params.id + "/")
           .then((response) => {
             this.title = response.data.title;
-            this.post = response.data;
+            this.post = marked(response.data.content);
+            this.time = response.data.created_time;
+            this.view = response.data.look;
             this.category = response.data.category.name;
             this.tag = response.data.tag.name;
-            // console.log(response.data);
+            console.log(response.data);
           })
           .catch((error) => {
             console.log(error);
           });
       else {
-        this.$route.params.id = 1
+        this.$route.params.id = 1;
         get("/posts/1/")
           .then((response) => {
             this.title = response.data.title;
@@ -109,8 +125,13 @@ export default {
       }
 
       .bar {
+        width: 300px;
+        margin: 10px auto;
         text-align: center;
         margin-bottom: 20px;
+        display: flex;
+        justify-content: space-around;
+        // background-color: red;
       }
 
       .content {
