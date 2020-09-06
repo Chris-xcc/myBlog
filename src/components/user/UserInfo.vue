@@ -67,7 +67,7 @@ export default {
     getUser() {
       get("/users/1/")
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           window.localStorage.setItem("email", response.data.email);
           this.$store.commit({
             type: GET_EMAIL,
@@ -87,7 +87,7 @@ export default {
         .then((response) => {
           this.message = response.data;
           this.show = !this.show;
-          console.log(response);
+          // console.log(response);
         })
         .catch((err) => {
           console.log(err);

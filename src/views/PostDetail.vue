@@ -83,7 +83,7 @@ export default {
             this.view = response.data.look;
             this.category = response.data.category.name;
             this.tag = response.data.tag.name;
-            console.log(response.data);
+            // console.log(response.data);
           })
           .catch((error) => {
             console.log(error);

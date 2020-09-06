@@ -20,7 +20,7 @@ export default {
   },
   [GET_EMAIL](state, payload) {
     state.email = payload.email
-    console.log(payload.email);
+    // console.log(payload.email);
   },
   [GET_PAGE](state, payload) {
     // console.log(payload)

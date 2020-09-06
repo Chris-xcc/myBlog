@@ -92,7 +92,7 @@ export default {
       })
         .then((response) => {
           // this.Authorization = response.data.token;
-          console.log(response);
+          // console.log(response);
           window.localStorage.setItem("token", "Token " + response.data.token);
           this.$store.commit({
             type: SET_TOKEN,

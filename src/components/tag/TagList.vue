@@ -12,7 +12,7 @@
         :key="tag.id"
       >
         <div class="item-title">{{tag.name}}</div>
-        <div class="item-num">{{tag.id}}</div>
+        <!-- <div class="item-num">{{tag.id}}</div> -->
       </router-link>
     </div>
   </div>

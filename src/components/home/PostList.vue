@@ -58,7 +58,7 @@ export default {
       PostList()
         .then((response) => {
           this.postList = response.data.results;
-          console.log(response.data);
+          // console.log(response.data);
         })
         .catch((error) => {
           console.log(error);

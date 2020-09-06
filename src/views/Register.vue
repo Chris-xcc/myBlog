@@ -102,7 +102,7 @@ export default {
         .then((response) => {
           this.newuser = !this.newuser;
           this.message = response.data;
-          console.log(response);
+          // console.log(response);
           alert(this.message);
           this.$router.push("/login/");
         })

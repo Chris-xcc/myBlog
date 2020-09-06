@@ -23,7 +23,7 @@ export function get(config) {
     if (store.state.token) {
       config.headers['Authorization'] = store.state.token
     }
-    console.log(config);
+    // console.log(config);
     return config
   }, err => {
     console.log(err)
@@ -47,7 +47,7 @@ export function post(config) {
     if (store.state.token) {
       config.headers['Authorization'] = store.state.token
     }
-    console.log(config);
+    // console.log(config);
     return config
   }, err => {
     console.log(err)

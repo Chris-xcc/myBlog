@@ -55,7 +55,7 @@ export default {
       get("/posts/" + this.$route.params.id + "/comments/")
         .then((response) => {
           this.comment = response.data;
-          console.log(response);
+          // console.log(response);
         })
         .catch((error) => {
           console.log(error);
@@ -64,7 +64,7 @@ export default {
     postComment() {
       post({ url: "/comments/", data: this.commentForm })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           this.comment.splice(0, 0, response.data);
           // console.log(this.comment)
           alert("成功");
