@@ -21,7 +21,8 @@
 // @ is an alias to /src
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
-import Main from "../components/home/Main";
+import Main from "@/components/home/Main";
+import { get } from "@/api/services/instance";
 
 export default {
   name: "Home",

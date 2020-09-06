@@ -12,7 +12,7 @@
         :key="category.id"
       >
         <div class="item-title">{{category.name}}</div>
-        <div class="item-num">{{category.id}}</div>
+        <!-- <div class="item-num">{{category.id}}</div> -->
       </router-link>
     </div>
   </div>
@@ -72,6 +72,7 @@ export default {
     border: 1px solid #dcdcdc;
     box-shadow: 0 0 1px #c0c0c0;
     border-radius: 20px;
+    cursor: pointer;
 
     &:hover {
       transition: all 1s;

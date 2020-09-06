@@ -21,7 +21,7 @@
           <i class="el-icon-s-custom"></i>
         </router-link>
         <router-link to tag="div" class="user" v-else>
-          <div class="username">admin</div>
+          <div class="username">{{$store.state.username}}</div>
           <router-link to="/" tag="div" class="logout-bar">
             <router-link to="/user" tag="div">
               <div class="user-info">个人中心</div>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { REMOVE_TOKEN } from "../../store/mutations-types";
+import { REMOVE_TOKEN } from "@/store/mutations-types";
 
 export default {
   name: "Header",

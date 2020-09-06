@@ -7,10 +7,22 @@
           <div class="post-detail">
             <div class="title">{{title}}</div>
             <div class="bar">
-              <div class="time el-icon-date">{{time}}</div>
-              <div class="view el-icon-view">{{view}}</div>
-              <div class="category el-icon-collection">{{category}}</div>
-              <div class="tag el-icon-discount" v-if="tag">{{tag}}</div>
+              <div class="time">
+                <i class="el-icon-date"></i>
+                <span>{{time}}</span>
+              </div>
+              <div class="view">
+                <i class="el-icon-view"></i>
+                <span>{{view}}</span>
+              </div>
+              <div class="category">
+                <i class="el-icon-collection"></i>
+                <span>{{category}}</span>
+              </div>
+              <div class="tag" v-if="tag">
+                <i class="el-icon-discount"></i>
+                <span>{{tag}}</span>
+              </div>
             </div>
             <div class="content markdown-body" v-html="post"></div>
           </div>
@@ -27,7 +39,7 @@ import Home from "./Home";
 import PostSide from "@/components/post/PostSide";
 import Breadcrumb from "@/components/post/Breadcrumb";
 import Comment from "@/components/post/Comment";
-import { get } from "../api/services/instance";
+import { get } from "@/api/services/instance";
 
 import marked from "marked";
 
@@ -119,19 +131,27 @@ export default {
 
       .title {
         text-align: center;
-        margin-bottom: 20px;
+        margin: 40px auto;
         font-size: 30px;
         font-weight: bold;
+
       }
 
       .bar {
-        width: 300px;
+        width: 400px;
         margin: 10px auto;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
         display: flex;
-        justify-content: space-around;
+        // justify-content: space-around;
         // background-color: red;
+
+        i{
+          margin: auto 5px;
+        }
+        .time,.view,.category,.tag{
+          margin: auto 10px;
+        }
       }
 
       .content {

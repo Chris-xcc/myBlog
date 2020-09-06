@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-    <el-carousel height=" 250px">
+    <el-carousel height=" 400px">
       <el-carousel-item v-for="(item,index) in image" :key="index">
         <img :src="item" />
       </el-carousel-item>
@@ -18,6 +18,7 @@ export default {
         require("@/assets/img/Carry White.jpg"),
         require("@/assets/img/20200307203002.jpg"),
         require("@/assets/img/background.jpg"),
+        require("@/assets/img/django.jpg"),
       ],
     };
   },
@@ -28,6 +29,7 @@ export default {
 .banner {
   img {
     width: 100%;
+    // height: 100%;
   }
 }
 </style>
