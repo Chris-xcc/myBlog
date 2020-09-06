@@ -27,7 +27,7 @@
           </el-form-item>-->
 
           <el-form-item>
-            <el-button type="primary" @click="login('loginForm')">登录</el-button>
+            <el-button type="primary" @click="login()">登录</el-button>
           </el-form-item>
           <el-form-item>
             <el-button @click="resetForm('loginForm')">重置</el-button>
@@ -35,10 +35,10 @@
         </el-form>
         <div class="bottom-box">
           <div class="right">
-            <router-link to="email_active" tag="div">
+            <!-- <router-link to="email_active" tag="div">
               <div class="active">激活</div>
             </router-link>
-            <span>|</span>
+            <span>|</span>-->
             <router-link to="register" tag="div">
               <div class="register">注册</div>
             </router-link>
@@ -58,6 +58,8 @@
 import Home from "./Home";
 import { SET_TOKEN } from "@/store/mutations-types";
 import { post } from "@/api/services/instance";
+import { get } from "../api/services/instance";
+import { GET_USERNAME } from '../store/mutations-types';
 
 export default {
   name: "Login",
@@ -89,6 +91,18 @@ export default {
           });
           this.$router.push("/");
           alert("登陆成功");
+
+          get({ url: "/users/1/" })
+            .then((response) => {
+              window.localStorage.setItem("username", response.data.username);
+              this.$store.commit({
+                type: GET_USERNAME,
+                username: response.data.username
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         })
         .catch((err) => {
           console.log(err);

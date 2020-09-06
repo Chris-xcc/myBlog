@@ -3,7 +3,7 @@
     <div class="register">
       <div class="container" v-if="!newuser">
         <div class="top">注册</div>
-        <el-form :model="registerForm" ref="registerFormRef" status-icon>
+        <el-form :model="registerForm" ref="registerForm" status-icon>
           <el-form-item>
             <el-input
               type="text"
@@ -46,12 +46,16 @@
         </el-form>
         <div class="bottom-box">
           <div class="right">
-            <router-link to="email_active" tag="div">
+            <!-- <router-link to="email_active" tag="div">
               <div class="active">激活</div>
             </router-link>
-            <span>|</span>
+            <span>|</span> -->
             <router-link to="login" tag="div">
               <div class="login">登录</div>
+            </router-link>
+            <span>|</span>
+             <router-link to="forget" tag="div">
+              <div class="forget">忘记密码</div>
             </router-link>
           </div>
         </div>
@@ -88,7 +92,7 @@ export default {
         .then((response) => {
           this.newuser = !this.newuser;
           this.message = response.data;
-          // console.log(response);
+          console.log(response);
           // alert("登陆成功");
         })
         .catch((err) => {
