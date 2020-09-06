@@ -41,7 +41,7 @@
             ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="register()" style="width:100%">注册</el-button>
+            <el-button type="primary" @click="register" style="width:100%">注册</el-button>
           </el-form-item>
         </el-form>
         <div class="bottom-box">
@@ -49,12 +49,12 @@
             <!-- <router-link to="email_active" tag="div">
               <div class="active">激活</div>
             </router-link>
-            <span>|</span> -->
+            <span>|</span>-->
             <router-link to="login" tag="div">
               <div class="login">登录</div>
             </router-link>
             <span>|</span>
-             <router-link to="forget" tag="div">
+            <router-link to="forget" tag="div">
               <div class="forget">忘记密码</div>
             </router-link>
           </div>
@@ -77,23 +77,34 @@ export default {
   data() {
     return {
       registerForm: {
-        email: "",
-        username: "",
-        password: "",
-        check_password: "",
+        email: "1486316634@qq.com",
+        username: "1486316634",
+        password: "1486316634",
+        check_password: "1486316634",
       },
       newuser: false,
       message: "",
     };
   },
   methods: {
+    getCookie(name) {
+      let value = "; " + document.cookie;
+      let parts = value.split("; " + name + "=");
+      if (parts.length === 2) return parts.pop().split(";").shift();
+    },
     register() {
-      post({ url: "/users/", data: this.registerForm })
+      post({
+        url: "/users/",
+        data: this.registerForm,
+        headers: { "X-CSRFToken": this.getCookie("csrftoken") },
+      })
+        // post({ url: "/users/", data: this.registerForm })
         .then((response) => {
           this.newuser = !this.newuser;
           this.message = response.data;
           console.log(response);
-          // alert("登陆成功");
+          alert(this.message);
+          this.$router.push("/login/");
         })
         .catch((err) => {
           console.log(err);

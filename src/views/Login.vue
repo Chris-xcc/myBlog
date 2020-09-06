@@ -59,7 +59,7 @@ import Home from "./Home";
 import { SET_TOKEN } from "@/store/mutations-types";
 import { post } from "@/api/services/instance";
 import { get } from "../api/services/instance";
-import { GET_USERNAME } from '../store/mutations-types';
+import { GET_USERNAME } from "../store/mutations-types";
 
 export default {
   name: "Login",
@@ -79,8 +79,17 @@ export default {
     getRemember() {
       this.remember = !this.remember;
     },
+    getCookie(name) {
+      let value = "; " + document.cookie;
+      let parts = value.split("; " + name + "=");
+      if (parts.length === 2) return parts.pop().split(";").shift();
+    },
     login() {
-      post({ url: "/login/", data: this.loginForm })
+      post({
+        url: "/login/",
+        data: this.loginForm,
+        headers: { "X-CSRFToken": this.getCookie("csrftoken") },
+      })
         .then((response) => {
           // this.Authorization = response.data.token;
           console.log(response);
@@ -97,7 +106,7 @@ export default {
               window.localStorage.setItem("username", response.data.username);
               this.$store.commit({
                 type: GET_USERNAME,
-                username: response.data.username
+                username: response.data.username,
               });
             })
             .catch((err) => {
