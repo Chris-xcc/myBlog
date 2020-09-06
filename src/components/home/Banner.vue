@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-    <el-carousel height=" 400px">
+    <el-carousel height=" 300px">
       <el-carousel-item v-for="(item,index) in image" :key="index">
         <img :src="item" />
       </el-carousel-item>
@@ -14,10 +14,7 @@ export default {
   data() {
     return {
       image: [
-        require("@/assets/img/Captain Marvel.jpg"),
-        require("@/assets/img/Carry White.jpg"),
-        require("@/assets/img/20200307203002.jpg"),
-        require("@/assets/img/background.jpg"),
+        require("@/assets/img/python.jpg"),
         require("@/assets/img/django.jpg"),
       ],
     };
