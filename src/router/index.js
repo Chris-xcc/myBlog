@@ -64,11 +64,12 @@ const routes = [{
     name: 'Register',
     component: Register
 },
-{
-    path: '/email_active',
-    name: 'EmailActive',
-    component: EmailActive
-},
+// {
+//     path: '/email_active',
+//     name: 'EmailActive',
+//     component: EmailActive
+// }
+,
 {
     path: '/forget',
     name: 'Forget',
