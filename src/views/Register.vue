@@ -77,10 +77,10 @@ export default {
   data() {
     return {
       registerForm: {
-        email: "1486316634@qq.com",
-        username: "1486316634",
-        password: "1486316634",
-        check_password: "1486316634",
+        email: "",
+        username: "",
+        password: "",
+        check_password: "",
       },
       newuser: false,
       message: "",
