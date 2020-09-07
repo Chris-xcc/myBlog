@@ -138,12 +138,12 @@ export default {
       }
 
       .bar {
-        width: 400px;
+        width: 600px;
         margin: 10px auto;
         text-align: center;
         margin-bottom: 40px;
         display: flex;
-        // justify-content: space-around;
+        justify-content: center;
         // background-color: red;
 
         i{
