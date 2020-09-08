@@ -10,6 +10,7 @@ module.exports = {
     proxy:{
         '/api': {
             target: 'http://127.0.0.1:8000/', //API服务器的地址
+            // target: 'http://8.129.170.252:8000/', //API服务器的地址
             // target: 'http://192.168.146.128:8000/', //API服务器的地址
             ws: true,  //代理websockets
             changeOrigin: true, // 虚拟的站点需要更管origin

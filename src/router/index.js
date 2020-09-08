@@ -42,13 +42,13 @@ const routes = [{
 },
 {
     path: '/post/',
-    redirect: '/post/1'
+    redirect: '/post/:id'
 },
-{
-    path: '/post/1',
-    name: 'PostDetail',
-    component: PostDetail
-},
+// {
+//     path: '/post/1',
+//     name: 'PostDetail',
+//     component: PostDetail
+// },
 {
     path: '/post/:id',
     name: 'PostDetail',

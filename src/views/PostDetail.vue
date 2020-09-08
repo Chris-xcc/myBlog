@@ -61,53 +61,57 @@ export default {
       tags: "",
     };
   },
-  mounted() {
-    const link = document.createElement("link");
-    link.type = "text/css";
-    link.rel = "stylesheet";
-    link.href =
-      "https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css";
-    document.head.appendChild(link);
-  },
+  // mounted() {
+  // const link = document.createElement("link");
+  // link.type = "text/css";
+  // link.rel = "stylesheet";
+  // link.href =
+  //   "https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css";
+  // document.head.appendChild(link);
+  // },
   created() {
     this.getPosts();
   },
   methods: {
     getPosts() {
-      if (this.$route.params.id)
-        get("/posts/" + this.$route.params.id + "/")
-          .then((response) => {
-            this.title = response.data.title;
-            this.post = marked(response.data.content);
-            this.time = response.data.created_time;
-            this.view = response.data.look;
-            this.category = response.data.category.name;
-            this.tags = response.data.tag;
-            console.log(response.data.tag);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      else {
-        this.$route.params.id = 1;
-        get("/posts/1/")
-          .then((response) => {
-            this.title = response.data.title;
-            this.post = response.data;
-            this.category = response.data.category.name;
-            this.tag = response.data.tag.name;
-            // console.log(response);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
+      // if (this.$route.params.id)
+      get("/posts/" + this.$route.params.id + "/")
+        .then((response) => {
+          this.title = response.data.title;
+          this.post = marked(response.data.content);
+          this.time = response.data.created_time;
+          this.view = response.data.look;
+          this.category = response.data.category.name;
+          this.tags = response.data.tag;
+          // console.log(response.data.content);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      // else {
+      //   // this.$route.params.id = 1;
+      //   get("/posts/1/")
+      //     .then((response) => {
+      //      this.title = response.data.title;
+      //       this.post = marked(response.data.content);
+      //       this.time = response.data.created_time;
+      //       this.view = response.data.look;
+      //       this.category = response.data.category.name;
+      //       this.tags = response.data.tag;
+      //       console.log(response.data.content);
+      //     })
+      //     .catch((error) => {
+      //       console.log(error);
+      //     });
+      // }
     },
   },
 };
 </script>
 
 <style lang="less" scoped>
+@import url("../assets/css/markdown/markdown.min.css");
+
 .post-detail {
   // background-color: burlywood;
 }
