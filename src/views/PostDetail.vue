@@ -26,7 +26,7 @@
             </div>
             <div class="content markdown-body" v-html="post"></div>
           </div>
-          <comment></comment>
+          <!-- <comment></comment> -->
         </div>
         <!-- <post-side></post-side> -->
       </div>
@@ -128,6 +128,7 @@ export default {
 
     .post-detail {
       margin: 10px;
+      margin-bottom: 50px;
 
       .title {
         text-align: center;
