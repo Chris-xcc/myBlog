@@ -19,9 +19,9 @@
                 <i class="el-icon-collection"></i>
                 <span>{{category}}</span>
               </div>
-              <div class="tag" v-if="tag">
+              <div class="tag" v-if="this.tags[0]">
                 <i class="el-icon-discount"></i>
-                <span>{{tag}}</span>
+                <span v-for="tag in tags" :key="tag.id">{{tag.name}}</span>
               </div>
             </div>
             <div class="content markdown-body" v-html="post"></div>
@@ -58,7 +58,7 @@ export default {
       time: "",
       view: "",
       category: "",
-      tag: "",
+      tags: "",
     };
   },
   mounted() {
@@ -82,8 +82,8 @@ export default {
             this.time = response.data.created_time;
             this.view = response.data.look;
             this.category = response.data.category.name;
-            this.tag = response.data.tag.name;
-            // console.log(response.data);
+            this.tags = response.data.tag;
+            console.log(response.data.tag);
           })
           .catch((error) => {
             console.log(error);
@@ -134,11 +134,10 @@ export default {
         margin: 40px auto;
         font-size: 30px;
         font-weight: bold;
-
       }
 
       .bar {
-        width: 600px;
+        // width: 700px;
         margin: 10px auto;
         text-align: center;
         margin-bottom: 40px;
@@ -146,11 +145,17 @@ export default {
         justify-content: center;
         // background-color: red;
 
-        i{
+        i {
           margin: auto 5px;
         }
-        .time,.view,.category,.tag{
+        .time,
+        .view,
+        .category,
+        .tag {
           margin: auto 10px;
+        }
+        .tag span {
+          margin-right: 5px;
         }
       }
 
